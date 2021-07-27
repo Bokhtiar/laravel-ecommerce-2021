@@ -49,6 +49,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
+
 <!-- jQuery -->
 <script src="{{ asset('admin') }}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -72,5 +73,9 @@
 
 <!-- PAGE SCRIPTS -->
 <script src="{{ asset('admin') }}/dist/js/pages/dashboard2.js"></script>
+@yield('js')
+
+
+
 </body>
 </html>
