@@ -10,17 +10,24 @@
             <p id="close" class=" float-right btn btn-sm btn-danger">X</p>
         </div>
 
+    @elseif (Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+        @php
+            Session::forget('success');
+        @endphp
+        <p id="close" class=" float-right btn btn-sm btn-success">X</p>
+    </div>
+
     @endif
 
 
 
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">All Category List</h3>
-    </div>
+
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped text-center">
         <thead>
         <tr>
           <th>index</th>
@@ -36,12 +43,34 @@
           <td> <img src="/images/{{$item->icon_image}}" alt=""></td>
           <td>{{$item->name}}</td>
           <td>
-              <a class="btn btn-sm btn-rounded btn-primary" href=""><i class="fas fa-eye"></i></a>
+            <button type="button" class="btn btn-sm btn-rounded btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{$item->id}}"><i class="fas fa-eye"></i></button>
               <a class="btn btn-sm btn-rounded btn-success" href=""> <i class="fas fa-user-edit"></i></a>
               <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/category/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
           </td>
-
         </tr>
+
+
+
+        <!--category view modal start here -->
+        <div class="modal fade bd-example-modal-lg{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="card">
+                    <div class="card-header">
+                        Category Detail
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"> {{$item->name}}</h5>
+                      <p class="card-text">{{$item->description}}</p>
+                      <p class="cart-img">
+                        <img width="100%" src="/images/{{$item->banner_image}}" alt="">
+                      </p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+         <!--category view modal end here -->
         @endforeach
 
 
@@ -55,6 +84,11 @@
         </tr>
         </tfoot>
       </table>
+
+
+
+
+
     </div>
 </div>
 

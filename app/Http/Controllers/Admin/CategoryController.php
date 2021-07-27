@@ -42,40 +42,42 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories',
+            'icon_image' => 'required',
+            'banner_image' => 'required',
+        ], [
+            'name.required' => 'Category name is required & Unique',
+            'icon_image.required' => 'icon_image is required',
+            'banner_image.required' => 'banner_image is required',
+        ]);
 
-        // $validatedData = $request->validate([
-        //     'icon_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        //    ]);
-        //    $file = $request->file('icon_image');
-
-        //    // for save original image
-        //    $ogImage = Image::make($file);
-
-        //    $originalPath = 'public/images/';
-        //    $ogImage =  $ogImage->save($originalPath.time().$file->getClientOriginalName());
-
-        //    // for store resized image
-        //    $thumbnailPath = 'public/thumbnail/';
-        //    $ogImage->resize(250,125);
-        //    $thImage = $ogImage->save($thumbnailPath.time().$file->getClientOriginalName());
-
-
-
-
-           $image       = $request->file('image');
+           $image       = $request->file('icon_image');
            $filename    = $image->getClientOriginalName();
-           //Fullsize
            $image->move(public_path().'/full/',$filename);
            $image_resize = Image::make(public_path().'/full/'.$filename);
            $image_resize->fit(30, 30);
            $image_resize->save(public_path('images/' .$filename));
+           //icon image end
+
+           $image       = $request->file('banner_image');
+           $banner_image    = $image->getClientOriginalName();
+           $image->move(public_path().'/full/',$banner_image);
+           $image_resize = Image::make(public_path().'/full/'.$banner_image);
+           $image_resize->fit(832, 300);
+           $image_resize->save(public_path('images/' .$banner_image));
+           //banner image end
 
            $product= new Category();
            $product->name = $request->name;
+           $product->parent_category = $request->parent_category;
+           $product->description = $request->description;
+
+           $product->banner_image = $banner_image;
            $product->icon_image = $filename;
            $product->save();
 
-           return back()->with('success', 'Your product saved with image!!!');
+           return redirect()->route('admin.category.index')->with('success', 'Your product saved with image!!!');
 
 
 
