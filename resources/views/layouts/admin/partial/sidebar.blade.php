@@ -48,6 +48,12 @@
                   <p>Categorie's</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('admin.category.create')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Create Category</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
