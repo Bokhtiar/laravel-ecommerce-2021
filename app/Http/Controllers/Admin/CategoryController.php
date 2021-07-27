@@ -67,7 +67,7 @@ class CategoryController extends Controller
            //Fullsize
            $image->move(public_path().'/full/',$filename);
            $image_resize = Image::make(public_path().'/full/'.$filename);
-           $image_resize->fit(200, 200);
+           $image_resize->fit(30, 30);
            $image_resize->save(public_path('images/' .$filename));
 
            $product= new Category();
@@ -126,6 +126,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Category::find($id)->delete();
+        return back()->with('danger', 'Delete Successfully');
     }
 }

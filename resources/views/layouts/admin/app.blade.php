@@ -9,7 +9,7 @@
   <title>AdminLTE 3 |</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ asset('admin') }}/plugins/font-awesome/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/ba78558982.js" crossorigin="anonymous"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin') }}/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
