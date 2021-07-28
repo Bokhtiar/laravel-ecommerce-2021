@@ -25,6 +25,8 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
         Route::get('index', [CategoryController::class, 'index'])->name('index');
         Route::get('create', [CategoryController::class, 'create'])->name('create');
         Route::post('store', [CategoryController::class, 'store']);
+        Route::get('edit/{id}', [CategoryController::class, 'edit']);
+        Route::post('update/{id}', [CategoryController::class, 'store']);
         Route::get('destroy/{id}', [CategoryController::class, 'destroy']);
     });//category end
 
