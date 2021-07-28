@@ -31,12 +31,12 @@
                     <h3>Create New Brand</h3>
                 </div>
 
-                <form action="{{url('admin/brand/store')}}" method="POST" enctype="multipart/form-data">
+                <form action=" {{ isset($edit) ?  url('admin/brand/update/'.$edit->id) : url('admin/brand/store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
                         <label for="">Brand Name<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="type here brand name" name="name" value="{{@$edit->name}}"
-                            id="">
-                            @if ($errors->has('name'))
+                        <input type="text" class="form-control" placeholder="type here brand name" name="name" value="{{@$edit->name}}" id="">
+                        @if ($errors->has('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
                         @endif
                     </div>
@@ -86,41 +86,10 @@
                                 <td> <img src="/images/{{$item->logo}}" alt=""></td>
                                 <td>{{$item->name}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-rounded btn-primary" data-toggle="modal"
-                                        data-target=".bd-example-modal-lg{{$item->id}}"><i
-                                            class="fas fa-eye"></i></button>
-                                    <a class="btn btn-sm btn-rounded btn-success"
-                                        href="{{url('admin/brand/edit/'.$item->id)}}"> <i
-                                            class="fas fa-user-edit"></i></a>
-                                    <a class="btn btn-sm btn-rounded btn-danger"
-                                        href="{{ url('admin/brand/destroy/'.$item->id) }}"> <i
-                                            class="fas fa-trash"></i></a>
+                                    <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/brand/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
+                                    <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/brand/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
-
-
-
-                            <!--brand view modal start here -->
-                            <div class="modal fade bd-example-modal-lg{{$item->id}}" tabindex="-1" role="dialog"
-                                aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                brand Detail
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> {{$item->name}}</h5>
-                                                <p class="card-text">{{$item->description}}</p>
-                                                <p class="cart-img">
-                                                    <img width="100%" src="/images/{{$item->banner_image}}" alt="">
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--brand view modal end here -->
                             @endforeach
 
 
@@ -175,8 +144,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 <script>
     $('#close').click(function() {
-                    $('.alert').hide(2000);
-                })
+        $('.alert').hide(2000);
+    })
+
 </script>
 
 @endsection
