@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\BrandController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,5 +30,14 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
         Route::post('update/{id}', [CategoryController::class, 'store']);
         Route::get('destroy/{id}', [CategoryController::class, 'destroy']);
     });//category end
+
+    Route::group(["as"=>'brand.', "prefix"=>'brand'],function(){
+        Route::get('index', [BrandController::class, 'index'])->name('index');
+        Route::get('create', [BrandController::class, 'create'])->name('create');
+        Route::post('store', [BrandController::class, 'store']);
+        Route::get('edit/{id}', [BrandController::class, 'edit']);
+        Route::post('update/{id}', [BrandController::class, 'store']);
+        Route::get('destroy/{id}', [BrandController::class, 'destroy']);
+    });//brand end
 
 });
