@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\AttributeValueController;
+use App\Http\Controllers\Admin\ColorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -55,6 +56,14 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
         Route::get('edit/{id}', [AttributeValueController::class, 'edit']);
         Route::post('update/{id}', [AttributeValueController::class, 'store']);
         Route::get('destroy/{id}', [AttributeValueController::class, 'destroy']);
+    });//attribute end
+
+    Route::group(["as"=>'color.', "prefix"=>'color'],function(){
+        Route::get('index', [ColorController::class, 'index'])->name('index');
+        Route::post('store', [ColorController::class, 'store']);
+        Route::get('edit/{id}', [ColorController::class, 'edit']);
+        Route::post('update/{id}', [ColorController::class, 'store']);
+        Route::get('destroy/{id}', [ColorController::class, 'destroy']);
     });//attribute end
 
 });
