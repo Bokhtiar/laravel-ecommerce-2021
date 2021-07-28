@@ -63,12 +63,11 @@ class ColorController extends Controller
             $this->validation($id = null, $request);
             $color = new Color();
             $this->save($color, $request);
-            return redirect()->route('admin.color.index')->with('success', 'Your Color saved with image!!!');
+            return redirect()->route('admin.color.index')->with('success', 'Your Color saved !!!');
         } else {
-            $this->validation($id, $request);
             $color = Color::find($id);
             $this->save($color, $request);
-            return redirect()->route('admin.color.index')->with('success', 'Your Color Code saved with image!!!');
+            return redirect()->route('admin.color.index')->with('success', 'Your Color Code s!!');
         }
     }
 
@@ -92,7 +91,9 @@ class ColorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $colors = Color::all();
+        $edit = color::find($id);
+        return view('admin.color.index', compact('colors', 'edit'));
     }
 
     /**
@@ -115,6 +116,7 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        color::find($id)->delete();
+        return redirect()->route('admin.color.index')->with('success', 'Data Delete !!!');
     }
 }

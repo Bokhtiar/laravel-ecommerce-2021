@@ -78,6 +78,7 @@
                             <tr>
                                 <td>{{$loop->index + 1}}</td>
                                 <td>{{$item->name}}</td>
+                                <td>{{$item->color_code}}</td>
                                 <td>
                                     <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/color/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
                                     <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/color/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
@@ -90,7 +91,8 @@
                         <tfoot>
                             <tr>
                                 <th>index</th>
-                                <th>Name</th>
+                                <th>Color Name</th>
+                                <th>color code</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
