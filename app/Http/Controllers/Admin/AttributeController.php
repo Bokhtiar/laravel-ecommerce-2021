@@ -19,10 +19,10 @@ class AttributeController extends Controller
         return view('admin.attribute.index', compact('attributes'));
     }
 
-    public function save(Attribute $attribute, Request $request)
+    public function save(Attribute $attributes, Request $request)
     {
-        $attribute->name = $request->name;
-        $attribute->save();
+        $attributes->name = $request->name;
+        $attributes->save();
     }
 
 
@@ -49,7 +49,7 @@ class AttributeController extends Controller
         } else {
             $attributes = Attribute::find($id);
             $this->save($attributes, $request);
-            return redirect()->route('admin.brand.index')->with('success', 'Your brand Updated Successfully!!!');
+            return redirect()->route('admin.attribute.index')->with('success', 'Your Attributes Updated Successfully!!!');
         }
     }
 
@@ -73,7 +73,9 @@ class AttributeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = Attribute::find($id);
+        $attributes = Attribute::all();
+        return view('admin.attribute.index', compact('attributes', 'edit'));
     }
 
     /**
@@ -96,6 +98,7 @@ class AttributeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Attribute::find($id)->delete();
+        return redirect()->route('admin.attribute.index')->with('danger', 'Data Deleted Successfully');
     }
 }
