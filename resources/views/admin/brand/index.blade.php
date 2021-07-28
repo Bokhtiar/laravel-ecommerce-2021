@@ -68,6 +68,9 @@
 
         <div class="col-sm-12 col-12 col-sm-8 col-lg-8">
             <div class="card">
+                <div class="card-title">
+                    <h3 class="container">List Of Brands</h3>
+                </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped text-center">
@@ -83,7 +86,7 @@
                             @foreach ($brands as $item)
                             <tr>
                                 <td>{{$loop->index + 1}}</td>
-                                <td> <img src="/images/{{$item->logo}}" alt=""></td>
+                                <td> <img src="/images/brands/{{$item->logo}}" alt=""></td>
                                 <td>{{$item->name}}</td>
                                 <td>
                                     <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/brand/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>

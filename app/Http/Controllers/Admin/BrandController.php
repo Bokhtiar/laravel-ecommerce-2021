@@ -44,8 +44,8 @@ class BrandController extends Controller
             $filename    = $image->getClientOriginalName();
             $image->move(public_path() . '/full/', $filename);
             $image_resize = Image::make(public_path() . '/full/' . $filename);
-            $image_resize->fit(30, 30);
-            $image_resize->save(public_path('images/' . $filename));
+            $image_resize->fit(270, 270);
+            $image_resize->save(public_path('images/brands/' . $filename));
             $brand->logo = $filename;
             //logo image end
         } else {
@@ -131,6 +131,7 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brnad = Brand::find($id)->delete();
+        return redirect()->route('admin.brand.index')->with('danger', 'Data Deleted Successfully');
     }
 }
