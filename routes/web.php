@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\AttributeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,11 +34,18 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
 
     Route::group(["as"=>'brand.', "prefix"=>'brand'],function(){
         Route::get('index', [BrandController::class, 'index'])->name('index');
-        Route::get('create', [BrandController::class, 'create'])->name('create');
         Route::post('store', [BrandController::class, 'store']);
         Route::get('edit/{id}', [BrandController::class, 'edit']);
         Route::post('update/{id}', [BrandController::class, 'store']);
         Route::get('destroy/{id}', [BrandController::class, 'destroy']);
     });//brand end
+
+    Route::group(["as"=>'attribute.', "prefix"=>'attribute'],function(){
+        Route::get('index', [AttributeController::class, 'index'])->name('index');
+        Route::post('store', [AttributeController::class, 'store']);
+        Route::get('edit/{id}', [AttributeController::class, 'edit']);
+        Route::post('update/{id}', [AttributeController::class, 'store']);
+        Route::get('destroy/{id}', [AttributeController::class, 'destroy']);
+    });//attribute end
 
 });
