@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\AttributeValueController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +47,14 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
         Route::get('edit/{id}', [AttributeController::class, 'edit']);
         Route::post('update/{id}', [AttributeController::class, 'store']);
         Route::get('destroy/{id}', [AttributeController::class, 'destroy']);
+    });//attribute end
+
+    Route::group(["as"=>'attributeValue.', "prefix"=>'attributeValue'],function(){
+        Route::get('index', [AttributeValueController::class, 'index'])->name('index');
+        Route::post('store', [AttributeValueController::class, 'store']);
+        Route::get('edit/{id}', [AttributeValueController::class, 'edit']);
+        Route::post('update/{id}', [AttributeValueController::class, 'store']);
+        Route::get('destroy/{id}', [AttributeValueController::class, 'destroy']);
     });//attribute end
 
 });
