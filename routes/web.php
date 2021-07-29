@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,6 +61,15 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
 
     Route::group(["as"=>'color.', "prefix"=>'color'],function(){
         Route::get('index', [ColorController::class, 'index'])->name('index');
+        Route::post('store', [ColorController::class, 'store']);
+        Route::get('edit/{id}', [ColorController::class, 'edit']);
+        Route::post('update/{id}', [ColorController::class, 'store']);
+        Route::get('destroy/{id}', [ColorController::class, 'destroy']);
+    });//attribute end
+
+    Route::group(["as"=>'product.', "prefix"=>'product'],function(){
+        Route::get('index', [ColorController::class, 'index'])->name('index');
+        Route::get('create', [ProductController::class, 'create'])->name('create');
         Route::post('store', [ColorController::class, 'store']);
         Route::get('edit/{id}', [ColorController::class, 'edit']);
         Route::post('update/{id}', [ColorController::class, 'store']);
