@@ -68,7 +68,7 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
     });//attribute end
 
     Route::group(["as"=>'product.', "prefix"=>'product'],function(){
-        Route::get('index', [ColorController::class, 'index'])->name('index');
+        Route::get('index', [ProductController::class, 'index'])->name('index');
         Route::get('create', [ProductController::class, 'create'])->name('create');
         Route::post('store', [ColorController::class, 'store']);
         Route::get('edit/{id}', [ColorController::class, 'edit']);

@@ -20,7 +20,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-from-label">Product Name <span class="text-danger">*</span></label>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="name" placeholder="Product Name" onchange="update_sku()" required>
+                                        <input type="text" class="form-control" name="name" placeholder="Product Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group row" id="category">
@@ -54,21 +54,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">Tags <span class="text-danger">*</span></label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control aiz-tag-input" name="tags[]" placeholder="Type and hit enter to add a tag">
-                                        <small class="text-muted">This is used for search. Input those words by which cutomer can find this product.</small>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">Barcode</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" name="barcode" placeholder="Barcode">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
                                     <label class="col-md-3 col-from-label">Refundable</label>
                                     <div class="col-md-8">
                                         <label class="aiz-switch aiz-switch-success mb-0">
@@ -85,33 +70,34 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="signinSrEmail">Gallery Images <small>(600x600)</small></label>
+                                    <label class="col-md-3 col-form-label" for="signinSrEmail">Gallery Images
+                                        <small>(600x600)</small></label>
                                     <div class="col-md-8">
                                         <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
+                                                <input   type="file" name="photos" class="selected-files">
                                             </div>
-                                            <div class="form-control file-amount">Choose file</div>
-                                            <input type="hidden" name="photos" class="selected-files">
                                         </div>
                                         <div class="file-preview box sm">
                                         </div>
-                                        <small class="text-muted">These images are visible in product details page gallery. Use 600x600 sizes images.</small>
+                                        <small class="text-muted">These images are visible in product details page
+                                            gallery. Use 600x600 sizes images.</small>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label" for="signinSrEmail">Thumbnail Image <small>(300x300)</small></label>
+                                    <label class="col-md-3 col-form-label" for="signinSrEmail">Thumbnail Image
+                                        <small>(300x300)</small></label>
                                     <div class="col-md-8">
                                         <div class="input-group" data-toggle="aizuploader" data-type="image">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
                                             </div>
-                                            <div class="form-control file-amount">Choose file</div>
-                                            <input type="hidden" name="thumbnail_img" class="selected-files">
+                                            <input type="file" name="thumbnail_img" class="selected-files">
                                         </div>
                                         <div class="file-preview box sm">
                                         </div>
-                                        <small class="text-muted">This image is visible in all product box. Use 300x300 sizes image. Keep some blank space around main object of your image as we had to crop some edge in different devices to make it responsive.</small>
+                                        <small class="text-muted">This image is visible in all product box. Use 300x300
+                                            sizes image. Keep some blank space around main object of your image as we
+                                            had to crop some edge in different devices to make it responsive.</small>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +121,8 @@
                                     <label class="col-md-3 col-from-label">Video Link</label>
                                     <div class="col-md-8">
                                         <input type="text" class="form-control" name="video_link" placeholder="Video Link">
-                                        <small class="text-muted">Use proper link without extra parameter. Don&#039;t use short share link/embeded iframe code.</small>
+                                        <small class="text-muted">Use proper link without extra parameter. Don&#039;t
+                                            use short share link/embeded iframe code.</small>
                                     </div>
                                 </div>
                             </div>
@@ -151,11 +138,16 @@
                                     </div>
                                     <div class="col-md-8">
                                         <select class="form-control aiz-selectpicker" data-live-search="true" data-selected-text-format="count" name="colors[]" id="colors" multiple disabled>
-                                            <option value="#F0F8FF" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#F0F8FF'></span><span>AliceBlue</span></span>"></option>
-                                            <option value="#9966CC" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#9966CC'></span><span>Amethyst</span></span>"></option>
-                                            <option value="#FAEBD7" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#FAEBD7'></span><span>AntiqueWhite</span></span>"></option>
-                                            <option value="#00FFFF" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#00FFFF'></span><span>Aqua</span></span>"></option>
-                                            <option value="#9ACD32" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#9ACD32'></span><span>YellowGreen</span></span>"></option>
+                                            <option value="#F0F8FF" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#F0F8FF'></span><span>AliceBlue</span></span>">
+                                            </option>
+                                            <option value="#9966CC" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#9966CC'></span><span>Amethyst</span></span>">
+                                            </option>
+                                            <option value="#FAEBD7" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#FAEBD7'></span><span>AntiqueWhite</span></span>">
+                                            </option>
+                                            <option value="#00FFFF" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#00FFFF'></span><span>Aqua</span></span>">
+                                            </option>
+                                            <option value="#9ACD32" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#9ACD32'></span><span>YellowGreen</span></span>">
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="col-md-1">
@@ -203,9 +195,16 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-3 control-label" for="start_date">Discount Date Range</label>
+                                    <label class="col-sm-3 control-label" for="start_date_start">Discount Date Range Start</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control aiz-date-range" name="date_range" placeholder="Select Date" data-time-picker="true" data-format="DD-MM-Y HH:mm:ss" data-separator=" to " autocomplete="off">
+                                        <input type="date" class="form-control" name="date_range_start" placeholder="Select Date" data-time-picker="true" data-format="DD-MM-Y HH:mm:ss" data-separator=" to " autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" for="start_date_end">Discount Date Range End</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" name="date_range_end" placeholder="Select Date" data-time-picker="true" data-format="DD-MM-Y HH:mm:ss" data-separator=" to " autocomplete="off">
                                     </div>
                                 </div>
 
@@ -215,22 +214,9 @@
                                         <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Discount" name="discount" class="form-control" required>
                                     </div>
                                     <div class="col-md-3">
-                                        <select class="form-control aiz-selectpicker" name="discount_type">
-                                            <option value="amount">Flat</option>
-                                            <option value="percent">Percent</option>
-                                        </select>
+                                        <p>Product Discount % Type</p>
                                     </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">
-                                        Set Point
-                                    </label>
-                                    <div class="col-md-6">
-                                        <input type="number" lang="en" min="0" value="0" step="1" placeholder="1" name="earn_point" class="form-control">
-                                    </div>
-                                </div>
-
                                 <div id="show-hide-div">
                                     <div class="form-group row">
                                         <label class="col-md-3 col-from-label">Quantity <span class="text-danger">*</span></label>
@@ -253,30 +239,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0 h6">Product Description</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">Description</label>
-                                    <div class="col-md-8">
-                                        <textarea class="aiz-text-editor" name="description"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--                <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0 h6">Product Shipping Cost</h5>
-        </div>
-        <div class="card-body">
-
-        </div>
-    </div>-->
-
-
 
                     </div>
 
@@ -300,34 +262,8 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-6 col-from-label">Flat Rate</label>
-                                    <div class="col-md-6">
-                                        <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="radio" name="shipping_type" value="flat_rate">
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
 
-                                <div class="flat_rate_shipping_div" style="display: none">
-                                    <div class="form-group row">
-                                        <label class="col-md-6 col-from-label">Shipping cost</label>
-                                        <div class="col-md-6">
-                                            <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Shipping cost" name="flat_shipping_cost" class="form-control" required>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-6 col-from-label">Is Product Quantity Mulitiply</label>
-                                    <div class="col-md-6">
-                                        <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="checkbox" name="is_quantity_multiplied" value="1">
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -364,15 +300,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-6 col-from-label">Show Stock With Text Only</label>
-                                    <div class="col-md-6">
-                                        <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="radio" name="stock_visibility_state" value="text">
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
+
 
                                 <div class="form-group row">
                                     <label class="col-md-6 col-from-label">Hide Stock</label>
@@ -421,61 +349,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0 h6">Todays Deal</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label class="col-md-6 col-from-label">Status</label>
-                                    <div class="col-md-6">
-                                        <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="checkbox" name="todays_deal" value="1">
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0 h6">Flash Deal</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group mb-3">
-                                    <label for="name">
-                                        Add To Flash
-                                    </label>
-                                    <select class="form-control aiz-selectpicker" name="flash_deal_id" id="flash_deal">
-                                        <option value="">Choose Flash Title</option>
-                                        <option value="1">
-                                            Winter Sell
-                                        </option>
-                                        <option value="2">
-                                            Falsh sale
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="name">
-                                        Discount
-                                    </label>
-                                    <input type="number" name="flash_discount" value="0" min="0" step="1" class="form-control">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="name">
-                                        Discount Type
-                                    </label>
-                                    <select class="form-control aiz-selectpicker" name="flash_discount_type" id="flash_discount_type">
-                                        <option value="">Choose Discount Type</option>
-                                        <option value="amount">Flat</option>
-                                        <option value="percent">Percent</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="card">
                             <div class="card-header">
@@ -511,30 +385,43 @@
                                         <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Tax" name="tax[]" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <select class="form-control aiz-selectpicker" name="tax_type[]">
-                                            <option value="amount">Flat</option>
-                                            <option value="percent">Percent</option>
-                                        </select>
+                                       <p>Vat % Type</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-12">
-                        <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group mr-2" role="group" aria-label="First group">
-                                <button type="submit" name="button" value="draft" class="btn btn-warning">Save As Draft</button>
-                            </div>
-                            <div class="btn-group mr-2" role="group" aria-label="Third group">
-                                <button type="submit" name="button" value="unpublish" class="btn btn-primary">Save &amp; Unpublish</button>
-                            </div>
-                            <div class="btn-group" role="group" aria-label="Second group">
-                                <button type="submit" name="button" value="publish" class="btn btn-success">Save &amp; Publish</button>
-                            </div>
-                        </div>
+
+
+
+
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 h6">Product Description</h5>
+                    </div>
+                    <div class="card-body">
+                        <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
+
+                <div class="col-12">
+                    <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="submit" name="button" value="draft" class="btn btn-warning">Save As
+                                Draft</button>
+                        </div>
+                        <div class="btn-group mr-2" role="group" aria-label="Third group">
+                            <button type="submit" name="button" value="unpublish" class="btn btn-primary">Save &amp;
+                                Unpublish</button>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Second group">
+                            <button type="submit" name="button" value="publish" class="btn btn-success">Save &amp;
+                                Publish</button>
+                        </div>
+                    </div>
+                </div><br><br>
             </form>
         </div>
 
