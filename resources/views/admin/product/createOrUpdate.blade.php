@@ -22,30 +22,47 @@
                                     <label class="col-md-3 col-from-label">Product Name <span class="text-danger">*</span></label>
                                     <div class="col-md-8">
                                         <input type="text" class="form-control" name="name" placeholder="Product Name" required>
+                                        @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row" id="category">
                                     <label class="col-md-3 col-from-label">Category <span class="text-danger">*</span></label>
                                     <div class="col-md-8">
                                         <select class="form-control aiz-selectpicker" name="category_id" id="category_id" data-live-search="true" required>
-                                            <option value="1">Women Clothing &amp; Fashion</option>
-                                            <option value="13">-- Hot Categories</option>
+                                            <option value="">--Select Category--</option>
+                                            @foreach ($categories as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
                                         </select>
+                                        @if ($errors->has('category_id'))
+                                        <span class="text-danger">{{ $errors->first('category_id') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row" id="brand">
                                     <label class="col-md-3 col-from-label">Brand</label>
                                     <div class="col-md-8">
                                         <select class="form-control aiz-selectpicker" name="brand_id" id="brand_id" data-live-search="true">
-                                            <option value="">Select Brand</option>
-                                            <option value="1">Ford</option>
+                                            <option value="">--Select Brand--</option>
+                                            @foreach ($brands as $item)
+                                            <option value="{{$item->id}}">{{ $item->name }}</option>
+                                            @endforeach
+
                                         </select>
+                                        @if ($errors->has('brand_id'))
+                                        <span class="text-danger">{{ $errors->first('brand_id') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-from-label">Unit</label>
                                     <div class="col-md-8">
                                         <input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" required>
+                                        @if ($errors->has('unit'))
+                                        <span class="text-danger">{{ $errors->first('unit') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -58,7 +75,8 @@
                                     <label class="col-md-3 col-from-label">Refundable</label>
                                     <div class="col-md-8">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="checkbox" name="refundable" checked>
+                                            YES<input type="checkbox" value="Refundable" name="refundable[]" checked>
+                                            NO<input type="checkbox" value="No-Refundable" name="refundable[]" id="">
                                             <span></span>
                                         </label>
                                     </div>
@@ -76,7 +94,7 @@
                                     <div class="col-md-8">
                                         <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
                                             <div class="input-group-prepend">
-                                                <input   type="file" name="photos" class="selected-files">
+                                                <input type="file" name="photos[]" multiple class="selected-files">
                                             </div>
                                         </div>
                                         <div class="file-preview box sm">
@@ -112,6 +130,7 @@
                                     <label class="col-md-3 col-from-label">Video Provider</label>
                                     <div class="col-md-8">
                                         <select class="form-control aiz-selectpicker" name="video_provider" id="video_provider">
+                                            <option value="">--Select Video Provider--</option>
                                             <option value="youtube">Youtube</option>
                                             <option value="dailymotion">Dailymotion</option>
                                             <option value="vimeo">Vimeo</option>
@@ -132,47 +151,43 @@
                             <div class="card-header">
                                 <h5 class="mb-0 h6">Product Variation</h5>
                             </div>
-                            <div class="card-body">
                                 <div class="form-group row">
-                                    <div class="col-md-3">
-                                        <input type="text" class="form-control" value="Colors" disabled>
-                                    </div>
                                     <div class="col-md-8">
-                                        <select class="form-control aiz-selectpicker" data-live-search="true" data-selected-text-format="count" name="colors[]" id="colors" multiple disabled>
-                                            <option value="#F0F8FF" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#F0F8FF'></span><span>AliceBlue</span></span>">
-                                            </option>
-                                            <option value="#9966CC" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#9966CC'></span><span>Amethyst</span></span>">
-                                            </option>
-                                            <option value="#FAEBD7" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#FAEBD7'></span><span>AntiqueWhite</span></span>">
-                                            </option>
-                                            <option value="#00FFFF" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#00FFFF'></span><span>Aqua</span></span>">
-                                            </option>
-                                            <option value="#9ACD32" data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:#9ACD32'></span><span>YellowGreen</span></span>">
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input value="1" type="checkbox" name="colors_active">
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <div class="col-md-3">
-                                        <input type="text" class="form-control" value="Attributes" disabled>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <select name="choice_attributes[]" id="choice_attributes" class="form-control aiz-selectpicker" data-selected-text-format="count" data-live-search="true" multiple data-placeholder="Choose Attributes">
-                                            <option value="1">Size</option>
-                                            <option value="2">Fabric</option>
-                                            <option value="4">Sleeve</option>
-                                            <option value="5">Wheel</option>
-                                            <option value="6">Liter</option>
-                                        </select>
-                                    </div>
-                                </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div id="inputFormRow">
+                                                    <div class="input-group mb-3">
+                                                        <select class="form-control" name="color_id[]" id="color">
+                                                            <option value="">--Select Color--</option>
+                                                            @foreach ($colors as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                        <select class="form-control" name="attribute_id[]" id="color">
+                                                            <option value="">--Select Attributes--</option>
+                                                            @foreach ($attributes as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                            @endforeach
+                                                        </select>
+
+
+
+                                                        <input type="text" name="price[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">
+                                                        <div class="input-group-append">
+                                                            <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="newRow"></div>
+                                                <button id="addRow" type="button" class="btn btn-info">Add Row</button>
+                                            </div>
+                                        </div><!--end add/remove-->
+
                                 <div>
                                     <p>Choose the attributes of this product and then input values of each attribute</p>
                                     <br>
@@ -183,6 +198,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="mb-0 h6">Product price + stock</h5>
@@ -240,7 +256,7 @@
                             </div>
                         </div>
                     </div>
-
+                    </div>
                     <div class="col-lg-4">
 
                         <div class="card">
@@ -255,14 +271,22 @@
                                     <label class="col-md-6 col-from-label">Free Shipping</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="radio" name="shipping_type" value="free" checked>
+                                            YES: <input type="checkbox" name="shipping_type[]" value="Free" checked>
+                                            NO: <input type="checkbox" name="shipping_type[]" value="No Free" id="no">
                                             <span></span>
                                         </label>
+
+                                            <br>
+                                            <div id="shipping_charge" style="display: none">
+                                                <label for="name">
+                                                    Shipping Charges
+                                                </label>
+                                                <div class="">
+                                                    <input type="number" class="form-control" name="shipping_charge" min="1" step="1" placeholder="Shipping Charges">
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
 
@@ -293,7 +317,7 @@
                                     <label class="col-md-6 col-from-label">Show Stock Quantity</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="radio" name="stock_visibility_state" value="quantity" checked>
+                                            <input type="radio" name="stock_visibility_state" value="show" checked>
                                             <span></span>
                                         </label>
                                     </div>
@@ -323,7 +347,8 @@
                                     <label class="col-md-6 col-from-label">Status</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="checkbox" name="cash_on_delivery" value="1" checked="">
+                                            YES:<input type="checkbox" name="cash_on_delivery[]" value="1" checked="">
+                                            NO:<input type="checkbox" name="cash_on_delivery[]" value="0" checked="">
                                             <span></span>
                                         </label>
                                     </div>
@@ -333,15 +358,15 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0 h6">Featured</h5>
+                                <h5 class="mb-0 h6">Product Publist</h5>
                             </div>
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label class="col-md-6 col-from-label">Status</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="checkbox" name="status" value="1">
-                                            <span></span>
+                                            YES: <input type="checkbox" name="status[]" value="1">
+                                            NO: <input type="checkbox" name="status[]" value="0" id="">
                                         </label>
                                     </div>
                                 </div>
@@ -388,19 +413,18 @@
                         </div>
 
                     </div>
-
-
-
-
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0 h6">Product Description</h5>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0 h6">Product Description</h5>
+                        </div>
+                        <div class="card-body">
+                            <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
-                    </div>
-                </div>
+
+
 
                 <div class="col-12">
                     <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
@@ -417,4 +441,36 @@
 
 </div><!-- .aiz-main-content -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+   $(document).ready(function(){
+
+  $("#no").click(function(){
+    $("#shipping_charge").toggle();
+  });
+});
+</script>
+
+<script type="text/javascript">
+    // add row
+    $("#addRow").click(function () {
+        var html = '';
+        html += '<div id="inputFormRow">';
+        html += '<div class="input-group mb-3">';
+        html +='<select name="color_id[]" class="form-control "><option value="">Select Color</option>  @foreach ($colors as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
+        html += '<select name="attributes_id[]" class="form-control "><option value="">Select Attributes</option>  @foreach ($attributes as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
+        html += '<input type="text" name="price[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
+        html += '<div class="input-group-append">';
+        html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+        html += '</div>';
+        html += '</div>';
+
+        $('#newRow').append(html);
+    });
+
+    // remove row
+    $(document).on('click', '#removeRow', function () {
+        $(this).closest('#inputFormRow').remove();
+    });
+</script>
 @endsection

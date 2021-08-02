@@ -70,10 +70,10 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
     Route::group(["as"=>'product.', "prefix"=>'product'],function(){
         Route::get('index', [ProductController::class, 'index'])->name('index');
         Route::get('create', [ProductController::class, 'create'])->name('create');
-        Route::post('store', [ColorController::class, 'store']);
-        Route::get('edit/{id}', [ColorController::class, 'edit']);
-        Route::post('update/{id}', [ColorController::class, 'store']);
-        Route::get('destroy/{id}', [ColorController::class, 'destroy']);
+        Route::post('store', [ProductController::class, 'store']);
+        Route::get('edit/{id}', [ProductController::class, 'edit']);
+        Route::post('update/{id}', [ProductController::class, 'store']);
+        Route::get('destroy/{id}', [ProductController::class, 'destroy']);
     });//attribute end
 
 });

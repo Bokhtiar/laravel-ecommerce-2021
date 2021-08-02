@@ -45,6 +45,7 @@ class CreateProductsTable extends Migration
 
             //shipping info (right side)
             $table->string('shipping_type');
+            $table->string('shipping_charge')->nullable();
             $table->integer('low_stock_quantity')->nullable();
             $table->string('stock_visibility_state')->nullable();
             $table->string('cash_on_delivery');
