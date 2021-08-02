@@ -9,7 +9,8 @@
             <h5 class="mb-0 h6">Add New product</h5>
         </div>
         <div class="">
-            <form class="form form-horizontal mar-top" action="" method="POST" enctype="multipart/form-data" id="choice_form">
+            <form class="form form-horizontal mar-top" action="{{ url('admin/product/store') }}" method="POST" enctype="multipart/form-data" id="choice_form">
+                @csrf
                 <div class="row gutters-5">
                     <div class="col-lg-8">
                         <div class="card">
@@ -235,11 +236,9 @@
                                 </div>
                                 <br>
                                 <div class="sku_combination" id="sku_combination">
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="col-lg-4">
@@ -341,7 +340,7 @@
                                     <label class="col-md-6 col-from-label">Status</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            <input type="checkbox" name="featured" value="1">
+                                            <input type="checkbox" name="status" value="1">
                                             <span></span>
                                         </label>
                                     </div>
@@ -375,14 +374,11 @@
                                 <h5 class="mb-0 h6">Vat &amp; TAX</h5>
                             </div>
                             <div class="card-body">
-                                <label for="name">
-                                    Tax
-                                    <input type="hidden" value="3" name="tax_id[]">
-                                </label>
+
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Tax" name="tax[]" class="form-control" required>
+                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Tax" name="tax" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                        <p>Vat % Type</p>
@@ -402,20 +398,12 @@
                         <h5 class="mb-0 h6">Product Description</h5>
                     </div>
                     <div class="card-body">
-                        <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                        <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="submit" name="button" value="draft" class="btn btn-warning">Save As
-                                Draft</button>
-                        </div>
-                        <div class="btn-group mr-2" role="group" aria-label="Third group">
-                            <button type="submit" name="button" value="unpublish" class="btn btn-primary">Save &amp;
-                                Unpublish</button>
-                        </div>
                         <div class="btn-group" role="group" aria-label="Second group">
                             <button type="submit" name="button" value="publish" class="btn btn-success">Save &amp;
                                 Publish</button>
