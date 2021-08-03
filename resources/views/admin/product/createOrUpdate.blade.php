@@ -75,8 +75,8 @@
                                     <label class="col-md-3 col-from-label">Refundable</label>
                                     <div class="col-md-8">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            YES<input type="checkbox" value="Refundable" name="refundable[]" checked>
-                                            NO<input type="checkbox" value="No-Refundable" name="refundable[]" id="">
+                                            YES<input type="checkbox" value="Refundable" name="refundable" checked>
+                                            NO<input type="checkbox" value="No-Refundable" name="refundable" id="">
                                             <span></span>
                                         </label>
                                     </div>
@@ -149,58 +149,6 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0 h6">Product Variation</h5>
-                            </div>
-                                <div class="form-group row">
-                                    <div class="col-md-8">
-
-
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div id="inputFormRow">
-                                                    <div class="input-group mb-3">
-                                                        <select class="form-control" name="color_id[]" id="color">
-                                                            <option value="">--Select Color--</option>
-                                                            @foreach ($colors as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                            @endforeach
-                                                        </select>
-
-                                                        <select class="form-control" name="attribute_id[]" id="color">
-                                                            <option value="">--Select Attributes--</option>
-                                                            @foreach ($attributes as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                            @endforeach
-                                                        </select>
-
-
-
-                                                        <input type="text" name="price[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">
-                                                        <div class="input-group-append">
-                                                            <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div id="newRow"></div>
-                                                <button id="addRow" type="button" class="btn btn-info">Add Row</button>
-                                            </div>
-                                        </div><!--end add/remove-->
-
-                                <div>
-                                    <p>Choose the attributes of this product and then input values of each attribute</p>
-                                    <br>
-                                </div>
-
-                                <div class="customer_choice_options" id="customer_choice_options">
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
                                 <h5 class="mb-0 h6">Product price + stock</h5>
                             </div>
                             <div class="card-body">
@@ -256,7 +204,7 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+
                     <div class="col-lg-4">
 
                         <div class="card">
@@ -271,8 +219,8 @@
                                     <label class="col-md-6 col-from-label">Free Shipping</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            YES: <input type="checkbox" name="shipping_type[]" value="Free" checked>
-                                            NO: <input type="checkbox" name="shipping_type[]" value="No Free" id="no">
+                                            YES: <input type="checkbox" name="shipping_type" value="Free" checked>
+                                            NO: <input type="checkbox" name="shipping_type" value="No Free" id="no">
                                             <span></span>
                                         </label>
 
@@ -347,8 +295,8 @@
                                     <label class="col-md-6 col-from-label">Status</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            YES:<input type="checkbox" name="cash_on_delivery[]" value="1" checked="">
-                                            NO:<input type="checkbox" name="cash_on_delivery[]" value="0" checked="">
+                                            YES:<input type="checkbox" name="cash_on_delivery" value="1" checked>
+                                            NO:<input type="checkbox" name="cash_on_delivery" value="0" >
                                             <span></span>
                                         </label>
                                     </div>
@@ -365,8 +313,8 @@
                                     <label class="col-md-6 col-from-label">Status</label>
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
-                                            YES: <input type="checkbox" name="status[]" value="1">
-                                            NO: <input type="checkbox" name="status[]" value="0" id="">
+                                            YES: <input type="checkbox" name="status" value="1" checked>
+                                            NO: <input type="checkbox" name="status" value="0" id="">
                                         </label>
                                     </div>
                                 </div>
@@ -415,6 +363,10 @@
                     </div>
                 </div>
 
+                
+
+
+
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0 h6">Product Description</h5>
@@ -441,32 +393,124 @@
 
 </div><!-- .aiz-main-content -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
-   $(document).ready(function(){
-
-  $("#no").click(function(){
-    $("#shipping_charge").toggle();
-  });
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
 });
-</script>
 
-<script type="text/javascript">
-    // add row
-    $("#addRow").click(function () {
-        var html = '';
-        html += '<div id="inputFormRow">';
-        html += '<div class="input-group mb-3">';
-        html +='<select name="color_id[]" class="form-control "><option value="">Select Color</option>  @foreach ($colors as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
-        html += '<select name="attributes_id[]" class="form-control "><option value="">Select Attributes</option>  @foreach ($attributes as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
-        html += '<input type="text" name="price[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
-        html += '<div class="input-group-append">';
-        html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
-        html += '</div>';
-        html += '</div>';
 
-        $('#newRow').append(html);
+    $('select[name="attribute_id[]"]').on('change', function(){
+        var attribute_id = $(this).val();
+        if(attribute_id){
+            $.ajax({
+                url: 'attribute_value/'+attribute_id,
+                type: 'GET',
+                dataType: "json",
+                success:function(data){
+                    data.forEach(item => {
+                        $("#attributevalue_id").append('<option value='+ item.id +'>'+ item.name +'</option>')
+                    });
+                }
+            })
+        }
     });
+
+
+
+
+
+
+   $(document).ready(function(){
+    $("#no").click(function(){
+        $("#shipping_charge").toggle();
+    });
+    });
+
+
+
+
+        var i = 0;
+
+        $("#add").click(function(){
+            ++i;
+
+            $("#wrapper_form").append('<div class="input-group mb-3" id="inputFormRow"> <select name="addmore['+i+'] [color_id]" class="form-control "><option value="">Select Color</option>  @foreach ($colors as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach </select> <select name="addmore['+i+'] [attribute_id]" class="form-control "><option value="">Select Attributes</option>  @foreach ($attributes as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select> <select class="form-control" name="addmore['+i+'] [attributevalue_id]" id="attributevalue_id"> <option value="">--Select Attributes Values--</option></select> <input type="text" name="addmore['+i+'] [price]" class="form-control m-input" placeholder="Enter Price" autocomplete="off">   <div class="input-group-append"><button id="removeRow" type="button" class="btn btn-danger">Remove</button></div> </div>');
+                 $('select[name="addmore['+i+'] [attribute_id]"]').on('change', function(){
+                    var attribute_id = $(this).val();
+                    if(attribute_id){
+
+                        $.ajax({
+
+                            url: 'attribute_value/'+attribute_id,
+                            type: 'GET',
+                            dataType: "json",
+                            success:function(data){
+
+                                data.forEach(item => {
+                                    console.log(item)
+                                    $('select[name="addmore['+i+'] [attributevalue_id]"]').append('<option value='+ item.id +'>'+ item.name +'</option>')
+                                });
+                            }
+                        })
+                    }
+                });
+
+
+
+
+                $(document).on('click', '#removeRow', function () {
+                $(this).closest('#inputFormRow').remove();
+    });
+        });
+
+
+
+
+    // // add row
+    // $("#addRow").click(function () {
+    //     var html = '';
+    //     html += '<div id="inputFormRow">';
+    //     html += '<div class="input-group mb-3">';
+    //     html +='<select name="color_id[]" class="form-control "><option value="">Select Color</option>  @foreach ($colors as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
+    //     html += '<select name="attribute_id[]" class="form-control "><option value="">Select Attributes</option>  @foreach ($attributes as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
+
+    //     html += ' <select class="form-control" name="attributevalue_id[]" id="attributevalue_id"> <option value="">--Select Attributes Values--</option></select>';
+
+    //     html += '<input type="text" name="price[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
+    //     html += '<div class="input-group-append">';
+    //     html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+    //     html += '</div>';
+    //     html += '</div>';
+
+    //     $('#newRow').append(html);
+
+
+
+    //     $('select[name="attribute_id[]"]').on('change', function(){
+    //     var attribute_id = $(this).val();
+    //     if(attribute_id){
+
+    //         $.ajax({
+
+    //             url: 'attribute_value/'+attribute_id,
+    //             type: 'GET',
+    //             dataType: "json",
+    //             success:function(data){
+
+    //                 data.forEach(item => {
+    //                     console.log(item)
+    //                     $('select[name="attributevalue_id[]"]').append('<option value='+ item.id +'>'+ item.name +'</option>')
+    //                 });
+    //             }
+    //         })
+    //     }
+    // });
+
+    // });
 
     // remove row
     $(document).on('click', '#removeRow', function () {

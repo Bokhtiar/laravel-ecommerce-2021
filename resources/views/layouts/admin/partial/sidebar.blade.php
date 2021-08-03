@@ -152,6 +152,13 @@
                   <p>Create New Product</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{route('admin.variant.create')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Create Product Variant</p>
+                </a>
+              </li>
             </ul>
           </li>
 

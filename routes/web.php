@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductVariantController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -74,6 +75,28 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
         Route::get('edit/{id}', [ProductController::class, 'edit']);
         Route::post('update/{id}', [ProductController::class, 'store']);
         Route::get('destroy/{id}', [ProductController::class, 'destroy']);
+        Route::get('attribute_value/{id}', [ProductController::class, 'attribute_value']);
+
+        Route::get('variant/create', [ProductController::class, 'variant_create'])->name('variant-create');
+
+    });//attribute end
+
+    Route::group(["as"=>'variant.', "prefix"=>'variant'],function(){
+        Route::get('index', [ProductVariantController::class, 'index'])->name('index');
+
+        Route::get('create', [ProductVariantController::class, 'variant_create'])->name('create');
+
+        Route::post('store', [ProductVariantController::class, 'store']);
+        Route::get('edit/{id}', [ProductVariantController::class, 'edit']);
+        Route::post('update/{id}', [ProductVariantController::class, 'store']);
+        Route::get('destroy/{id}', [ProductVariantController::class, 'destroy']);
+        Route::get('attribute_value/{id}', [ProductVariantController::class, 'attribute_value']);
+
+
+
     });//attribute end
 
 });
+
+
+
