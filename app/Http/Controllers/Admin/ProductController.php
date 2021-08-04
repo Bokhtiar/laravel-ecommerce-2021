@@ -10,14 +10,16 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductVariant;
-use Attribute;
+use Illuminate\Support\Str;
+use Image;
 use Illuminate\Http\Request;
 use League\CommonMark\Inline\Element\Code;
 
 class ProductController extends Controller
 {
     public function index(){
-        return view('admin.product.index');
+        $products = Product::latest()->get(['id', 'name']);
+        return view('admin.product.index', compact('products'));
     }
     public function create(){
         $categories = Category::all(['id', 'name']);
@@ -33,7 +35,6 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-
 
         $product = new Product();
         $product->name = $request->name;
@@ -54,8 +55,25 @@ class ProductController extends Controller
         $product->sku = $request->sku;
 
 
-        $product->photes = "test";
-        $product->thumbnail_img = "test";
+        $photes = array();
+        if ($request->hasFile('photes')) {
+            foreach ($request->photes as $key => $photo) {
+                $path = $photo->store('/product/Gallary/photos');
+                array_push($photes, $path);
+            }
+            $product['photes']=json_encode($photes);
+        }
+
+
+            $image       = $request->file('thumbnail_img');
+            $thumbnail_img    = $image->getClientOriginalName();
+            $image->move(public_path().'/full/',$thumbnail_img);
+            $image_resize = Image::make(public_path().'/full/'.$thumbnail_img);
+            $image_resize->fit(832, 300);
+            $image_resize->save(public_path('product/thumbnail_img/images/' .$thumbnail_img));
+            $product->thumbnail_img = $thumbnail_img;
+            //banner image end
+
 
 
             $product->shipping_type = $request->shipping_type;
@@ -65,7 +83,7 @@ class ProductController extends Controller
             $product->cash_on_delivery =$request->cash_on_delivery;
             $product->status = $request->status;
 
-            $product->est_shipping_days =$request->est_shipping_days;
+            $product->est_shipping_days = $request->est_shipping_days;
             $product->tex = $request->tex;
             $product->description = $request->description;
 
@@ -73,7 +91,7 @@ class ProductController extends Controller
             $product->save();
 
 
-            return back();
+            return redirect()->route('admin.product.index')->with('success', 'Product Successfully Store Done!!!');
 
 
 

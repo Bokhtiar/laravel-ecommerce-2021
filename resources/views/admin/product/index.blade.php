@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 @section('admin_content')
-<a href="{{route('admin.product.create')}}">create product</a>
+
  @if (Session::has('danger'))
         <div class="alert alert-danger">
             {{ Session::get('danger') }}
@@ -24,10 +24,10 @@
 
 
         <div class=" d-flex justify-content-between align-item-center">
-            <h2 class="mb-0">ALL CATEGORY LIST</h2>
-            <a class="text-light btn btn-icon btn-primary" href="{{route('admin.category.create')}}">
+            <h2 class="mb-0">ALL PRODUCT LIST</h2>
+            <a class="text-light btn btn-icon btn-primary" href="{{route('admin.product.create')}}">
                 <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-                <span class="btn-inner--text">CREATE NEW CATEGORY</span>
+                <span class="btn-inner--text">CREATE NEW PRODUCT</span>
               </a>
         </div>
       <!-- Card header -->
@@ -38,64 +38,31 @@
         <thead>
         <tr>
           <th>index</th>
-          <th>Icon Image</th>
           <th>Name</th>
           <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($categories as $item)
+        @foreach ($products as $item)
         <tr>
           <td>{{$loop->index + 1}}</td>
-          <td> <img src="/images/{{$item->icon_image}}" alt=""></td>
           <td>{{$item->name}}</td>
           <td>
             <button type="button" class="btn btn-sm btn-rounded btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{$item->id}}"><i class="fas fa-eye"></i></button>
-              <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/category/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
-              <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/category/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
+              <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/product/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
+              <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/product/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
           </td>
         </tr>
-
-
-
-        <!--category view modal start here -->
-        <div class="modal fade bd-example-modal-lg{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="card">
-                    <div class="card-header">
-                        Category Detail
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title"> {{$item->name}}</h5>
-                      <p class="card-text">{{$item->description}}</p>
-                      <p class="cart-img">
-                        <img width="100%" src="/images/{{$item->banner_image}}" alt="">
-                      </p>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-         <!--category view modal end here -->
         @endforeach
-
-
         </tbody>
         <tfoot>
         <tr>
           <th>index</th>
-          <th>Icon Image</th>
           <th>Name</th>
           <th>Action</th>
         </tr>
         </tfoot>
       </table>
-
-
-
-
-
     </div>
 </div>
 

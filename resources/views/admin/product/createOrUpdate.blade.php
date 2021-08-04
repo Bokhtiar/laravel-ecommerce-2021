@@ -94,7 +94,7 @@
                                     <div class="col-md-8">
                                         <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
                                             <div class="input-group-prepend">
-                                                <input type="file" name="photos[]" multiple class="selected-files">
+                                                <input type="file" name="photes[]" multiple class="selected-files">
                                             </div>
                                         </div>
                                         <div class="file-preview box sm">
@@ -186,7 +186,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 col-from-label">Quantity <span class="text-danger">*</span></label>
                                         <div class="col-md-6">
-                                            <input type="number" lang="en" min="0" value="0" step="1" placeholder="Quantity" name="current_stock" class="form-control" required>
+                                            <input type="number" lang="en" min="0" value="0" step="1" placeholder="Quantity" name="quantity" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -351,7 +351,7 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Tax" name="tax" class="form-control" required>
+                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Tax" name="tex" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                        <p>Vat % Type</p>
@@ -363,7 +363,7 @@
                     </div>
                 </div>
 
-                
+
 
 
 
