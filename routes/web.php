@@ -71,14 +71,12 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
     Route::group(["as"=>'product.', "prefix"=>'product'],function(){
         Route::get('index', [ProductController::class, 'index'])->name('index');
         Route::get('create', [ProductController::class, 'create'])->name('create');
+        Route::get('view/{id}', [ProductController::class, 'show']);
         Route::post('store', [ProductController::class, 'store']);
         Route::get('edit/{id}', [ProductController::class, 'edit']);
         Route::post('update/{id}', [ProductController::class, 'store']);
         Route::get('destroy/{id}', [ProductController::class, 'destroy']);
         Route::get('attribute_value/{id}', [ProductController::class, 'attribute_value']);
-
-        Route::get('variant/create', [ProductController::class, 'variant_create'])->name('variant-create');
-
     });//attribute end
 
     Route::group(["as"=>'variant.', "prefix"=>'variant'],function(){

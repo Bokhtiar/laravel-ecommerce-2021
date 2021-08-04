@@ -127,16 +127,19 @@
   <th>Product</th>
   <th>Color</th>
   <th>Attribute Values</th>
+  <th>Price</th>
   <th>Action</th>
 </tr>
 </thead>
 <tbody>
 @foreach ($variatns as $item)
+
 <tr>
   <td>{{$loop->index + 1}}</td>
-  <td> {{$item->product_id}}</td>
-  <td>{{$item->color_id}}</td>
-  <td>{{ $item->attribute_value_id }}</td>
+  <td>{{$item->product_id ? $item->product->name : ''}}</td>
+  <td> <p class="btn btn-sm btn-rounded" style="background-color: {{$item->color_id ? $item->color->color_code : '' }}" >a</p></td>
+  <td>{{$item->attribute_value_id ? $item->attributeValue->name : '' }}</td>
+  <td>{{$item->price}}</td>
   <td>
     <button type="button" class="btn btn-sm btn-rounded btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{$item->id}}"><i class="fas fa-eye"></i></button>
       <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/category/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
@@ -144,38 +147,18 @@
   </td>
 </tr>
 
-
-
-<!--category view modal start here -->
-<div class="modal fade bd-example-modal-lg{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="card">
-            <div class="card-header">
-                Category Detail
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"> {{$item->name}}</h5>
-              <p class="card-text">{{$item->description}}</p>
-              <p class="cart-img">
-                <img width="100%" src="/images/{{$item->banner_image}}" alt="">
-              </p>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
- <!--category view modal end here -->
 @endforeach
 
 
 </tbody>
 <tfoot>
 <tr>
-  <th>index</th>
-  <th>Icon Image</th>
-  <th>Name</th>
-  <th>Action</th>
+    <th>index</th>
+    <th>Product</th>
+    <th>Color</th>
+    <th>Attribute Values</th>
+    <th>Price</th>
+    <th>Action</th>
 </tr>
 </tfoot>
 </table>

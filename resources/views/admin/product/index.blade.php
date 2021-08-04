@@ -48,7 +48,7 @@
           <td>{{$loop->index + 1}}</td>
           <td>{{$item->name}}</td>
           <td>
-            <button type="button" class="btn btn-sm btn-rounded btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{$item->id}}"><i class="fas fa-eye"></i></button>
+              <a class="btn btn-sm btn-rounded btn-primary" href="{{ url('admin/product/view/'.$item->id) }}"><i class="fas fa-eye"></i></a>
               <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/product/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
               <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/product/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
           </td>
@@ -66,9 +66,9 @@
     </div>
 </div>
 
-{{-- @section('js')
+@section('js')
 <!-- DataTables -->
-<script src="{{ asset('admin') }}/plugins/datatables/jquery.dataTables.js"></script>
+{{-- <script src="{{ asset('admin') }}/plugins/datatables/jquery.dataTables.js"></script>
 <script src="{{ asset('admin') }}/plugins/datatables/dataTables.bootstrap4.js"></script> --}}
 
 
@@ -85,7 +85,7 @@
     });
   });
 </script> --}}
-{{-- @endsection --}}
+@endsection
 
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
             <script>

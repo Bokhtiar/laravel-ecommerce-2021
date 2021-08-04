@@ -86,23 +86,14 @@ class ProductController extends Controller
             $product->est_shipping_days = $request->est_shipping_days;
             $product->tex = $request->tex;
             $product->description = $request->description;
-
-
             $product->save();
-
-
             return redirect()->route('admin.product.index')->with('success', 'Product Successfully Store Done!!!');
-
-
-
     }
 
 
-    public function variant_create(){
-        $colors = Color::all(['id', 'name']);
-        $products = product::latest()->get(['id', 'name']);
-        $attributes = ModelsAttribute::all(['id', 'name']);
-        return view('admin.product.variant_create', compact('colors','attributes','products'));
+    public function show($id){
+        $attribute = ProductVariant::where('product_id', $id)->get();
 
+        return view('admin.product.detail', compact('attribute'));
     }
 }
