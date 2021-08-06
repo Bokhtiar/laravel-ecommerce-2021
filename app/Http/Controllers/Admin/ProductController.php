@@ -92,8 +92,24 @@ class ProductController extends Controller
 
 
     public function show($id){
+        $item = Product::find($id);
         $attribute = ProductVariant::where('product_id', $id)->get();
+        return view('admin.product.detail', compact('attribute', 'item'));
+    }
 
-        return view('admin.product.detail', compact('attribute'));
+    public function destroy($id){
+        Product::find($id)->delete();
+        return back();
+    }
+
+
+    public function product_price_variant($id){
+
+        $colors = Color::all(['id', 'name']);
+        $products = Product::latest()->get(['id', 'name']);
+        $attributes = ModelsAttribute::all(['id', 'name']);
+        $variatns = ProductVariant::where('product_id', $id)->get();
+        $edit = ProductVariant::where('product_id', $id)->first();
+        return view('admin.product.variant_create', compact('colors','attributes','products','variatns', 'edit'));
     }
 }

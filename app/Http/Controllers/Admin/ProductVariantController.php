@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use Attribute;
 use Illuminate\Http\Request;
+use PhpParser\Node\Attribute as NodeAttribute;
 
 class ProductVariantController extends Controller
 {
@@ -43,6 +44,7 @@ class ProductVariantController extends Controller
      */
     public function store(Request $request)
     {
+
         $variant = new ProductVariant();
         $variant->product_id = $request->product_id;
         $variant->color_id = $request->color_id;
@@ -64,6 +66,13 @@ class ProductVariantController extends Controller
         //
     }
 
+
+    public function price_variant($id){
+        $price = ProductVariant::find($id);
+        $variant = $price->price;
+        return response()->json($variant, 200);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -72,7 +81,12 @@ class ProductVariantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $colors = Color::all(['id', 'name']);
+        $products = Product::latest()->get(['id', 'name']);
+        $attributes = ModelsAttribute::all(['id', 'name']);
+        $variatns = ProductVariant::latest()->take(6)->get();
+        $edit = ProductVariant::find($id);
+        return view('admin.product.variant_create', compact('colors','attributes','products','variatns', 'edit'));
     }
 
     /**
@@ -84,7 +98,14 @@ class ProductVariantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $variant = ProductVariant::find($id);
+        $variant->product_id = $request->product_id;
+        $variant->color_id = $request->color_id;
+        $variant->attribute_id = $request->attribute_id;
+        $variant->attribute_value_id = $request->attributevalue_id;
+        $variant->price = $request->price;
+        $variant->save();
+        return back()->with('success', 'Update SuccessFully Done !');
     }
 
     /**
@@ -95,6 +116,7 @@ class ProductVariantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ProductVariant::find($id)->delete();
+        return back()->with('danger', 'successfully delete !!!');
     }
 }

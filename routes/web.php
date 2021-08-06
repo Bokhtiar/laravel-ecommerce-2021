@@ -76,23 +76,22 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
         Route::get('edit/{id}', [ProductController::class, 'edit']);
         Route::post('update/{id}', [ProductController::class, 'store']);
         Route::get('destroy/{id}', [ProductController::class, 'destroy']);
+
         Route::get('attribute_value/{id}', [ProductController::class, 'attribute_value']);
+        Route::get('variant/{id}', [ProductController::class, 'product_price_variant']);
     });//attribute end
 
     Route::group(["as"=>'variant.', "prefix"=>'variant'],function(){
         Route::get('index', [ProductVariantController::class, 'index'])->name('index');
-
         Route::get('create', [ProductVariantController::class, 'variant_create'])->name('create');
-
         Route::post('store', [ProductVariantController::class, 'store']);
         Route::get('edit/{id}', [ProductVariantController::class, 'edit']);
-        Route::post('update/{id}', [ProductVariantController::class, 'store']);
+        Route::post('update/{id}', [ProductVariantController::class, 'update']);
         Route::get('destroy/{id}', [ProductVariantController::class, 'destroy']);
         Route::get('attribute_value/{id}', [ProductVariantController::class, 'attribute_value']);
-
-
-
     });//attribute end
+
+    Route::get('/price-variant/{id}', [ProductVariantContr\oller::class, 'price_variant']);
 
 });
 

@@ -1,7 +1,10 @@
 @extends('layouts.admin.app')
 @section('admin_content')
 
-
+@section('frontend')
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet" href="{{ asset('admin') }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+@endsection
 
 <div class="container">
     <div class="px-15px px-lg-25px">
@@ -9,7 +12,8 @@
             <h5 class="mb-0 h6">Add New product</h5>
         </div>
         <div class="">
-            <form class="form form-horizontal mar-top" action="{{ url('admin/product/store') }}" method="POST" enctype="multipart/form-data" id="choice_form">
+            <form class="form form-horizontal mar-top" action="{{ url('admin/product/store') }}" method="POST"
+                enctype="multipart/form-data" id="choice_form">
                 @csrf
                 <div class="row gutters-5">
                     <div class="col-lg-8">
@@ -19,18 +23,22 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">Product Name <span class="text-danger">*</span></label>
+                                    <label class="col-md-3 col-from-label">Product Name <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="name" placeholder="Product Name" required>
+                                        <input type="text" class="form-control" name="name" placeholder="Product Name"
+                                            required>
                                         @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group row" id="category">
-                                    <label class="col-md-3 col-from-label">Category <span class="text-danger">*</span></label>
+                                    <label class="col-md-3 col-from-label">Category <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-md-8">
-                                        <select class="form-control aiz-selectpicker" name="category_id" id="category_id" data-live-search="true" required>
+                                        <select class="form-control aiz-selectpicker" name="category_id"
+                                            id="category_id" data-live-search="true" required>
                                             <option value="">--Select Category--</option>
                                             @foreach ($categories as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -44,7 +52,8 @@
                                 <div class="form-group row" id="brand">
                                     <label class="col-md-3 col-from-label">Brand</label>
                                     <div class="col-md-8">
-                                        <select class="form-control aiz-selectpicker" name="brand_id" id="brand_id" data-live-search="true">
+                                        <select class="form-control aiz-selectpicker" name="brand_id" id="brand_id"
+                                            data-live-search="true">
                                             <option value="">--Select Brand--</option>
                                             @foreach ($brands as $item)
                                             <option value="{{$item->id}}">{{ $item->name }}</option>
@@ -59,16 +68,19 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-from-label">Unit</label>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" required>
+                                        <input type="text" class="form-control" name="unit"
+                                            placeholder="Unit (e.g. KG, Pc etc)" required>
                                         @if ($errors->has('unit'))
                                         <span class="text-danger">{{ $errors->first('unit') }}</span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">Minimum Purchase Qty <span class="text-danger">*</span></label>
+                                    <label class="col-md-3 col-from-label">Minimum Purchase Qty <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-md-8">
-                                        <input type="number" lang="en" class="form-control" name="min_qty" value="1" min="1" required>
+                                        <input type="number" lang="en" class="form-control" name="min_qty" value="1"
+                                            min="1" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -92,7 +104,8 @@
                                     <label class="col-md-3 col-form-label" for="signinSrEmail">Gallery Images
                                         <small>(600x600)</small></label>
                                     <div class="col-md-8">
-                                        <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                                        <div class="input-group" data-toggle="aizuploader" data-type="image"
+                                            data-multiple="true">
                                             <div class="input-group-prepend">
                                                 <input type="file" name="photes[]" multiple class="selected-files">
                                             </div>
@@ -129,7 +142,8 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-from-label">Video Provider</label>
                                     <div class="col-md-8">
-                                        <select class="form-control aiz-selectpicker" name="video_provider" id="video_provider">
+                                        <select class="form-control aiz-selectpicker" name="video_provider"
+                                            id="video_provider">
                                             <option value="">--Select Video Provider--</option>
                                             <option value="youtube">Youtube</option>
                                             <option value="dailymotion">Dailymotion</option>
@@ -140,7 +154,8 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-from-label">Video Link</label>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="video_link" placeholder="Video Link">
+                                        <input type="text" class="form-control" name="video_link"
+                                            placeholder="Video Link">
                                         <small class="text-muted">Use proper link without extra parameter. Don&#039;t
                                             use short share link/embeded iframe code.</small>
                                     </div>
@@ -153,30 +168,40 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">Unit price <span class="text-danger">*</span></label>
+                                    <label class="col-md-3 col-from-label">Unit price <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-md-6">
-                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Unit price" name="unit_price" class="form-control" required>
+                                        <input type="number" lang="en" min="0" value="0" step="0.01"
+                                            placeholder="Unit price" name="unit_price" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-3 control-label" for="start_date_start">Discount Date Range Start</label>
+                                    <label class="col-sm-3 control-label" for="start_date_start">Discount Date Range
+                                        Start</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" name="date_range_start" placeholder="Select Date" data-time-picker="true" data-format="DD-MM-Y HH:mm:ss" data-separator=" to " autocomplete="off">
+                                        <input type="date" class="form-control" name="date_range_start"
+                                            placeholder="Select Date" data-time-picker="true"
+                                            data-format="DD-MM-Y HH:mm:ss" data-separator=" to " autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-3 control-label" for="start_date_end">Discount Date Range End</label>
+                                    <label class="col-sm-3 control-label" for="start_date_end">Discount Date Range
+                                        End</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" name="date_range_end" placeholder="Select Date" data-time-picker="true" data-format="DD-MM-Y HH:mm:ss" data-separator=" to " autocomplete="off">
+                                        <input type="date" class="form-control" name="date_range_end"
+                                            placeholder="Select Date" data-time-picker="true"
+                                            data-format="DD-MM-Y HH:mm:ss" data-separator=" to " autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-from-label">Discount <span class="text-danger">*</span></label>
+                                    <label class="col-md-3 col-from-label">Discount <span
+                                            class="text-danger">*</span></label>
                                     <div class="col-md-6">
-                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Discount" name="discount" class="form-control" required>
+                                        <input type="number" lang="en" min="0" value="0" step="0.01"
+                                            placeholder="Discount" name="discount" class="form-control" required>
                                     </div>
                                     <div class="col-md-3">
                                         <p>Product Discount % Type</p>
@@ -184,9 +209,11 @@
                                 </div>
                                 <div id="show-hide-div">
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-from-label">Quantity <span class="text-danger">*</span></label>
+                                        <label class="col-md-3 col-from-label">Quantity <span
+                                                class="text-danger">*</span></label>
                                         <div class="col-md-6">
-                                            <input type="number" lang="en" min="0" value="0" step="1" placeholder="Quantity" name="quantity" class="form-control" required>
+                                            <input type="number" lang="en" min="0" value="0" step="1"
+                                                placeholder="Quantity" name="quantity" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -224,15 +251,16 @@
                                             <span></span>
                                         </label>
 
-                                            <br>
-                                            <div id="shipping_charge" style="display: none">
-                                                <label for="name">
-                                                    Shipping Charges
-                                                </label>
-                                                <div class="">
-                                                    <input type="number" class="form-control" name="shipping_charge" min="1" step="1" placeholder="Shipping Charges">
-                                                </div>
+                                        <br>
+                                        <div id="shipping_charge" style="display: none">
+                                            <label for="name">
+                                                Shipping Charges
+                                            </label>
+                                            <div class="">
+                                                <input type="number" class="form-control" name="shipping_charge" min="1"
+                                                    step="1" placeholder="Shipping Charges">
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -247,7 +275,8 @@
                                     <label for="name">
                                         Quantity
                                     </label>
-                                    <input type="number" name="low_stock_quantity" value="1" min="0" step="1" class="form-control">
+                                    <input type="number" name="low_stock_quantity" value="1" min="0" step="1"
+                                        class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -296,7 +325,7 @@
                                     <div class="col-md-6">
                                         <label class="aiz-switch aiz-switch-success mb-0">
                                             YES:<input type="checkbox" name="cash_on_delivery" value="1" checked>
-                                            NO:<input type="checkbox" name="cash_on_delivery" value="0" >
+                                            NO:<input type="checkbox" name="cash_on_delivery" value="0">
                                             <span></span>
                                         </label>
                                     </div>
@@ -333,7 +362,8 @@
                                         Shipping Days
                                     </label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control" name="est_shipping_days" min="1" step="1" placeholder="Shipping Days">
+                                        <input type="number" class="form-control" name="est_shipping_days" min="1"
+                                            step="1" placeholder="Shipping Days">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupPrepend">days</span>
                                         </div>
@@ -351,10 +381,11 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Tax" name="tex" class="form-control" required>
+                                        <input type="number" lang="en" min="0" value="0" step="0.01" placeholder="Tax"
+                                            name="tex" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                       <p>Vat % Type</p>
+                                        <p>Vat % Type</p>
                                     </div>
                                 </div>
                             </div>
@@ -367,32 +398,67 @@
 
 
 
-                    <div class="card">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 h6">Product Description</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="card card-outline card-info">
                         <div class="card-header">
-                            <h5 class="mb-0 h6">Product Description</h5>
+                            <h3 class="card-title">
+                                Bootstrap WYSIHTML5
+                                <small>Simple and fast</small>
+                            </h3>
+                            <!-- tools box -->
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse"
+                                    data-toggle="tooltip" title="Collapse">
+                                    <i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool btn-sm" data-widget="remove"
+                                    data-toggle="tooltip" title="Remove">
+                                    <i class="fa fa-times"></i></button>
+                            </div>
+                            <!-- /. tools -->
                         </div>
-                        <div class="card-body">
-                            <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
+                        <!-- /.card-header -->
+                        <div class="card-body pad">
+                            <div class="mb-3">
+                                <textarea class="textarea" name="description" placeholder="Place some text here"
+                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                            </div>
+                            <p class="text-sm mb-0">
+                                Editor <a href="https://github.com/bootstrap-wysiwyg/bootstrap3-wysiwyg">Documentation
+                                    and license
+                                    information.</a>
+                            </p>
                         </div>
                     </div>
-
-
-
-                <div class="col-12">
-                    <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group" role="group" aria-label="Second group">
-                            <button type="submit" name="button" value="publish" class="btn btn-success">Save &amp;
-                                Publish</button>
-                        </div>
-                    </div>
-                </div><br><br>
-            </form>
+                </div>
         </div>
 
+
+
+        <div class="col-12">
+            <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <button type="submit" name="button" value="publish" class="btn btn-success">Save &amp;
+                        Publish</button>
+                </div>
+            </div>
+        </div><br><br>
+        </form>
     </div>
 
-</div><!-- .aiz-main-content -->
+</div>
 
+</div><!-- .aiz-main-content -->
+@section('js')
+<!-- CK Editor -->
+<script src="{{ asset('admin') }}/plugins/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{ asset('admin') }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+@endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
@@ -467,54 +533,30 @@
     });
         });
 
-
-
-
-    // // add row
-    // $("#addRow").click(function () {
-    //     var html = '';
-    //     html += '<div id="inputFormRow">';
-    //     html += '<div class="input-group mb-3">';
-    //     html +='<select name="color_id[]" class="form-control "><option value="">Select Color</option>  @foreach ($colors as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
-    //     html += '<select name="attribute_id[]" class="form-control "><option value="">Select Attributes</option>  @foreach ($attributes as $item) <option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach   </select>';
-
-    //     html += ' <select class="form-control" name="attributevalue_id[]" id="attributevalue_id"> <option value="">--Select Attributes Values--</option></select>';
-
-    //     html += '<input type="text" name="price[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
-    //     html += '<div class="input-group-append">';
-    //     html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
-    //     html += '</div>';
-    //     html += '</div>';
-
-    //     $('#newRow').append(html);
-
-
-
-    //     $('select[name="attribute_id[]"]').on('change', function(){
-    //     var attribute_id = $(this).val();
-    //     if(attribute_id){
-
-    //         $.ajax({
-
-    //             url: 'attribute_value/'+attribute_id,
-    //             type: 'GET',
-    //             dataType: "json",
-    //             success:function(data){
-
-    //                 data.forEach(item => {
-    //                     console.log(item)
-    //                     $('select[name="attributevalue_id[]"]').append('<option value='+ item.id +'>'+ item.name +'</option>')
-    //                 });
-    //             }
-    //         })
-    //     }
-    // });
-
-    // });
-
     // remove row
     $(document).on('click', '#removeRow', function () {
         $(this).closest('#inputFormRow').remove();
     });
+
+
+    $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    ClassicEditor
+      .create(document.querySelector('#editor1'))
+      .then(function (editor) {
+        // The editor instance
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+
+    // bootstrap WYSIHTML5 - text editor
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+    })
+  })
+
 </script>
 @endsection

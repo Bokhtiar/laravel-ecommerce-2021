@@ -6,7 +6,7 @@
         <h5 class="mb-0 h2">Product Variation</h5>
     </div>
         <div class="form-group ">
-            <form action="{{ url('admin/variant/store') }}" method="POST">
+            <form action="{{ @$edit ? url('admin/variant/update/'.$edit->id) :  url('admin/variant/store') }}" method="POST">
                 @csrf
             <div class="">
                 <div class="">
@@ -14,7 +14,7 @@
                     <select class="form-control" name="product_id" id="">
                         <option value="">--select product--</option>
                         @foreach ($products as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        <option value="{{ $item->id }}" {{ @$edit->product_id==$item->id ? 'Selected' :''}} >{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -22,20 +22,19 @@
             <br>
             <div class="">
                 <div class="" id="wrapper_form">
-
                         <label for="">Product Variant add</label>
                             <div class="input-group mb-3" id="inputFormRow">
                                 <select class="form-control" name="color_id" id="">
                                     <option value="">--Select Color--</option>
                                     @foreach ($colors as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}" {{@$edit->color_id == $item->id ? 'Selected' : ''}}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
 
                                 <select class="form-control" name="attribute_id" id="">
                                     <option value="">--Select Attributes--</option>
                                     @foreach ($attributes as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}" {{@$edit->attribute_id == $item->id ? 'Selected' : ''}}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
 
@@ -45,7 +44,7 @@
 
 
 
-                                <input type="text" name="price" class="form-control m-input" placeholder="Enter Price" autocomplete="off">
+                                <input type="text" value="{{@$edit->price}}" name="price" class="form-control m-input" placeholder="Enter Price" autocomplete="off">
 
                             </div>
 
@@ -142,8 +141,8 @@
   <td>{{$item->price}}</td>
   <td>
     <button type="button" class="btn btn-sm btn-rounded btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{$item->id}}"><i class="fas fa-eye"></i></button>
-      <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/category/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
-      <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/category/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
+      <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/variant/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
+      <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/variant/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>
   </td>
 </tr>
 
