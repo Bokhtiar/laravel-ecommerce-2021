@@ -9,6 +9,6 @@ class UserDashboardController extends Controller
 {
     public function index()
     {
-        return "hi i am a User dashboard";
+        return view('welcome');
     }
 }
