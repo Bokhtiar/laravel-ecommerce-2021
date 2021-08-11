@@ -48,7 +48,7 @@
           <td>{{$loop->index + 1}}</td>
           <td>{{$item->name}}</td>
           <td>
-              <a class="btn btn-sm btn-rounded btn-primary" href="{{ url('admin/product/variant/'.$item->id) }}">s</a>
+              <a class="btn btn-sm btn-rounded btn-primary" href="{{ url('admin/product/variant/'.$item->id) }}">Variant Price</a>
               <a class="btn btn-sm btn-rounded btn-primary" href="{{ url('admin/product/view/'.$item->id) }}"><i class="fas fa-eye"></i></a>
               <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/product/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>
               <a class="btn btn-sm btn-rounded btn-danger" href="{{ url('admin/product/destroy/'.$item->id) }}"> <i class="fas fa-trash"></i></a>

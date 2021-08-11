@@ -87,6 +87,7 @@ class ProductController extends Controller
             $product->tex = $request->tex;
             $product->description = $request->description;
             $product->save();
+
             return redirect()->route('admin.product.index')->with('success', 'Product Successfully Store Done!!!');
     }
 
