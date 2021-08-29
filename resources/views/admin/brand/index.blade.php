@@ -86,7 +86,7 @@
                             @foreach ($brands as $item)
                             <tr>
                                 <td>{{$loop->index + 1}}</td>
-                                <td> <img src="/images/brands/{{$item->logo}}" alt=""></td>
+                                <td> <img height="60px" width="60px" src="/images/brands/{{$item->logo}}" alt=""></td>
                                 <td>{{$item->name}}</td>
                                 <td>
                                     <a class="btn btn-sm btn-rounded btn-success" href="{{url('admin/brand/edit/'.$item->id)}}"> <i class="fas fa-user-edit"></i></a>

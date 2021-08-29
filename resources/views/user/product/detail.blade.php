@@ -1,5 +1,5 @@
-@extends('layouts.admin.app')
-@section('admin_content')
+@extends('layouts.user.app')
+@section('user_content')
 
 
 <section class="card">
@@ -11,7 +11,7 @@
         <div class="col-md-7">
             <div class="">
                 <div class="">
-             
+
                     <h3>{{$item->name}} </h3>
                 </div>
                 {{-- name --}}
@@ -103,7 +103,6 @@
                         display: inline;
                     }
 
-
                 </style>
                 {{-- css using checkbox desing --}}
 
@@ -113,9 +112,8 @@
                     <ul class="ul-wrapper">
                         <li class="li-wrapper">
                             <label class="container">
-                                <input class="select_value" id="color" type="checkbox" name="color"  value="{{$attr->id}}">
-                                <span style="background-color:{{$attr->color_id ? $attr->color->color_code : '' }}"
-                                    class="checkmark"></span>
+                                <input class="select_value" id="color" type="checkbox" name="color" value="{{$attr->id}}">
+                                <span style="background-color:{{$attr->color_id ? $attr->color->color_code : '' }}" class="checkmark"></span>
                             </label>
                         </li>
                     </ul>
@@ -132,7 +130,7 @@
                     <ul class="ul-wrapper">
                         <li class="li-wrapper">
                             <label class="container">
-                                <input  id="select_value_attr" type="checkbox" name="attr" value="{{$attr->id}}">
+                                <input id="attr" type="checkbox" name="attr" value="{{$attr->id}}">
                                 <span class="checkmark text-center">{{$attr->attribute_value_id ? $attr->attributeValue->name : '' }}</span>
 
                             </label>
@@ -145,14 +143,14 @@
                 <br>
                 <div class="my-3">
                     <p class="form-inline">
-                    <span>Quantity : &nbsp;</span><input type="number" minlength="1" value="{{$item->min_qty}}" placeholder="qty" style="width: 80px" class="form-control">
+                        <span>Quantity : &nbsp;</span><input type="number" minlength="1" value="{{$item->min_qty}}" placeholder="qty" style="width: 80px" class="form-control">
                     </p>
                 </div>
                 {{-- quantity --}}
 
                 <div class="my-3">
                     <p class="form-inline">
-                    <input type="submt" placeholder="qty" value="ADD TO CARD" class="btn btn-info btn-outline-primary">
+                        <input type="submt" placeholder="qty" value="ADD TO CARD" class="btn btn-info btn-outline-primary">
                     </p>
                 </div>
                 {{--add to card--}}
@@ -166,7 +164,7 @@
     {{-- description page --}}
     <section class="my-3 m-3">
 
-            <h3>Product Description</h3>
+        <h3>Product Description</h3>
 
         <p>
             {!!$item->description!!}
@@ -178,74 +176,55 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
 
-        $("#color_section").html('hi')
 
 
-        // ("input[type='checkbox']").click( function() {
-        //     console.log('hi')
-        //     var id = $(this).val();
-        //     console.log(id)
-        //     if(id){
-        //     $.ajax({
-        //         url: 'http://localhost:8000/admin/price-variant/' + id,
-        //         dataType: "Json",
-        //         type: 'GET',
-        //         success:function(data){
-        //             $("#price").empty();
-        //             $("#price").append('<h4> '+ data +' </h4>');
-
-        //         }
-
-        //     })
-        // }
-        // });
-        $(document).ready(function(){
-        $("input[type='checkbox']").on('change', function(){
+    $(document).ready(function() {
+        $("input[type='checkbox']").on('change', function() {
             var id = $(this).val();
             console.log(id)
-            if(id){
-            $.ajax({
-                url: 'http://localhost:8000/admin/price-variant/' + id,
-                dataType: "Json",
-                type: 'GET',
-                success:function(data){
-                    $("#price").empty();
-                    $("#price").append('<h4>Variant Price: '+ data +'$</h4>');
+            if (id) {
+                $.ajax({
+                    url: 'http://localhost:8000/admin/price-variant/' + id
+                    , dataType: "Json"
+                    , type: 'GET'
+                    , success: function(data) {
+                        $("#price").empty();
+                        $("#price").append('<h4>Variant Price: ' + data + '$</h4>');
 
-                }
+                    }
 
-            })
-        }
+                })
+            }
         });
     });
 
 
 
-        $("#attr").click(function(){
-            var id = $(this).val();
-            console.log(id)
-            if(id){
+    $("#attr").click(function() {
+        var id = $(this).val();
+        console.log(id)
+        if (id) {
             $.ajax({
-                url: 'http://localhost:8000/admin/price-variant/' + id,
-                dataType: "Json",
-                type: 'GET',
-                success:function(data){
+                url: 'http://localhost:8000/admin/price-variant/' + id
+                , type: 'GET'
+                , dataType: 'Json'
+                , success: function(data) {
                     $("#price").empty();
-                    $("#price").append('<h4> '+ data +' </h4>');
+                    $("#price").append('<h4> ' + data + ' </h4>');
 
                 }
 
             })
         }
-        })
+    })
 
-        $('.select_value').on('change', function() {
+    $('.select_value').on('change', function() {
         $('.select_value').not(this).prop('checked', false);
 
 

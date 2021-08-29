@@ -78,13 +78,15 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-3 col-lg-3">
+                    @foreach ($products as $item)
+                    @if ($item->date_range_start)
+                    <div class="col-sm-12 col-md-3 col-lg-3 my-2">
                         <div class=" hot-deals">
                             <div class="container">
-                                <a href="single_product.html">
-                                    <img class="my-3" src="images/p2.jpg" height="150px" width="100%" alt="">
+                                <a href="{{url('/product/view/'.$item->id)}}">
+                                    <img class="my-3" src="/product/thumbnail_img/images/{{$item->thumbnail_img}}" height="150px" width="100%" alt="">
                                     <p class="hot-deals">
-                                        <strong style="color: #A9A9A9;">product Name</strong> <br>
+                                        <strong style="color: #A9A9A9;">{{$item->name}}</strong> <br>
                                         <strong style="color: #A9A9A9;">
                                             <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
                                         </strong>
@@ -93,58 +95,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3">
-                        <div class=" hot-deals">
-                            <div class="container">
-                                <a href="single_product.html">
-                                    <img class="my-3" src="images/p3.jpg" height="150px" width="100%" alt="">
-                                    <p class="hot-deals">
-                                        <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                        <strong style="color: #A9A9A9;">
-                                            <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                        </strong>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3">
-                        <div class=" hot-deals">
-                            <div class="container">
-                                <a href="single_product.html">
-                                    <img class="my-3" src="images/p4.jpg" height="150px" width="100%" alt="">
-                                    <p class="hot-deals">
-                                        <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                        <strong style="color: #A9A9A9;">
-                                            <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                        </strong>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-12 col-md-3 col-lg-3">
-                        <div class=" hot-deals">
-                            <div class="container">
-                                <a href="single_product.html">
-                                    <img class="my-3" src="images/p5.jpg" height="150px" width="100%" alt="">
-                                    <p class="hot-deals">
-                                        <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                        <strong style="color: #A9A9A9;">
-                                            <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                        </strong>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-
+                    @endif
+                    @endforeach
                 </div>
 
             </div>
@@ -175,99 +127,17 @@
             <hr>
         </div>
         <div class="row">
+            @foreach ($brands as $item)
             <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
                 <div class=" hot-deals">
                     <div class="">
-                        <img class="" src="images/l1.png" height="150px" width="100%" alt="">
+                        <a href="{{url('brand/product/'.$item->id)}}">
+                            <img class="" src="/images/brands/{{$item->logo}}" height="150px" width="100%" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l12.jpg" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l3.png" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l4.png" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l5.png" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l10.jpg" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l7.jpg" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l7.jpg" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l8.jpg" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l9.jpg" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l10.png" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                <div class=" hot-deals">
-                    <div class="">
-                        <img class="" src="images/l11.png" height="150px" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-
-
-
+            @endforeach
         </div>
     </section>
     <!--shop by brand end-->
@@ -277,14 +147,14 @@
             <h4 class="hot-deals">Product List</h4>
         </div>
         <div class="row">
-
+            @foreach ($products as $item)
             <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
                 <div class=" hot-deals">
                     <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p2.jpg" height="150px" width="100%" alt="">
+                        <a href="{{url('/product/view/'.$item->id)}}">
+                            <img class="my-3" src="/product/thumbnail_img/images/{{$item->thumbnail_img}}" height="150px" width="100%" alt="">
                             <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
+                                <strong style="color: #A9A9A9;">{{$item->name}}</strong> <br>
                                 <strong style="color: #A9A9A9;">
                                     <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
                                 </strong>
@@ -293,150 +163,12 @@
                     </div>
                 </div>
             </div>
+            @endforeach
 
 
 
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p1.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p3.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p4.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p5.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p6.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p7.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p8.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p9.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class=" col-sm-12 col-md-3 col-lg-3 my-2">
-                <div class=" hot-deals">
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img class="my-3" src="images/p10.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">product Name</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
 
 

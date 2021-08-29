@@ -9,7 +9,7 @@
                 <div class="text-color collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto mt-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="pre_order.html"> <span><i class="fas fa-shopping-cart"></i> </span>Pre-order</a>
+                            <a class="nav-link" href=""> <span><i class="fas fa-shopping-cart"></i> </span>Pre-order</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
