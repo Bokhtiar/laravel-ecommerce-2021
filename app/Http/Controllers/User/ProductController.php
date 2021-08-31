@@ -25,6 +25,8 @@ class ProductController extends Controller
 
     public function category_ways_product($id)
     {
+        $products = Product::where('category_id', $id)->get();
+        return view('user.product.search', compact('products'));
 
     }
 }

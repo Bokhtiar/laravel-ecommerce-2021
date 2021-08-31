@@ -8,7 +8,7 @@
             <h3 class="cat">Categorie's</h3>
             <div class="bg-cat">
                 @foreach ($categories as $item)
-                <a href="category_product.html">
+                <a href="{{ url('category/product/'.$item->id) }}">
                     <span> <img height="20px" width="20px" src="/images/{{$item->icon_image}}" alt="">{{$item->name}}</span>
                     <hr>
                 </a>
@@ -50,29 +50,8 @@
     <!--slider and category show start-->
     <!--hot Deals and Offer product start-->
     <section class="my-4">
-        <div class="row">
-            <!--hot deal start-->
-            <div class="hot-deals col-sm-12 col-md-3 col-lg-3">
-                <div class=" hot-deals">
-                    <h4 class="text-center mt-2">HOT DEALS</h4>
-                    <hr>
-                    <div class="container ">
-                        <a href="single_product.html">
-                            <img src="images/p1.jpg" height="150px" width="100%" alt="">
-                            <p class="hot-deals">
-                                <strong style="color: #A9A9A9;">Coffee Dishes</strong> <br>
-                                <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
-                                </strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!--hot deal end-->
-            <!--offer product start-->
+        
 
-            <div class="col-sm-12 col-md-9 col-lg-9">
                 <div class=" bg-light d-flex justify-content-between align-item-center">
                     <h4 class="mb-0 mt-2">OFFER PRODUCTS</h4>
 
@@ -99,8 +78,7 @@
                     @endforeach
                 </div>
 
-            </div>
-        </div>
+
         <!--offer product end-->
         </div>
     </section>
@@ -164,14 +142,6 @@
                 </div>
             </div>
             @endforeach
-
-
-
-
-
-
-
-
         </div>
     </section>
     <!--end of product list-->
