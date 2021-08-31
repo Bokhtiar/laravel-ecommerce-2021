@@ -17,10 +17,24 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/brand/product/{id}', [App\Http\Controllers\User\BrandController::class, 'brand_ways_product']);
 Route::get('/product/view/{id}', [App\Http\Controllers\User\ProductController::class, 'show']);
+Route::post('search', [App\Http\Controllers\User\ProductController::class, 'search']);
+Route::get('category/product/{id}', [App\Http\Controllers\User\ProductController::class, 'category_ways_product']);
+
+
 
 
 Route::group([ "as"=>'user.' , "prefix"=>'user' , "namespace"=>'User' , "middleware"=>['auth','user']],function(){
     Route::get('/dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/add-to-cart/{id}', [App\Http\Controllers\User\CartController::class, 'store']);
+    Route::get('/cart/all', [App\Http\Controllers\User\CartController::class, 'cart_item']);
+    Route::post('porduct-quantiy/{id}', [App\Http\Controllers\User\CartController::class, 'update']);
+    Route::get('user/cart/delete/{id}', [App\Http\Controllers\User\CartController::class, 'delete']);
+    Route::get('checkout/create', [App\Http\Controllers\User\CheckoutController::class, 'create']);
+    Route::get('checkout/list', [App\Http\Controllers\User\CheckoutController::class, 'index']);
+    Route::post('checkout/store', [App\Http\Controllers\User\CheckoutController::class, 'store']);
+    Route::get('/pre-order/index', [App\Http\Controllers\User\PreOrderController::class, 'index']);
+    Route::get('/pre-order', [App\Http\Controllers\User\PreOrderController::class, 'create']);
+Route::post('/preOrder/store', [App\Http\Controllers\User\PreOrderController::class, 'store']);
 });
 
 

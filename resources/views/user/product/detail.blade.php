@@ -150,7 +150,10 @@
 
                 <div class="my-3">
                     <p class="form-inline">
-                        <input type="submt" placeholder="qty" value="ADD TO CARD" class="btn btn-info btn-outline-primary">
+
+                        <a href="{{url('user/add-to-cart/'.$item->id)}}" class="btn btn-info btn-outline-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+
+
                     </p>
                 </div>
                 {{--add to card--}}

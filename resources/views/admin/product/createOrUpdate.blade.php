@@ -162,6 +162,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="mb-0 h6">Product price + stock</h5>
@@ -436,6 +439,8 @@
                     </div>
                 </div>
         </div>
+
+
 
 
 

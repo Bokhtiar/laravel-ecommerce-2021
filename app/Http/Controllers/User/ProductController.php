@@ -14,4 +14,17 @@ class ProductController extends Controller
         $attribute = ProductVariant::where('product_id', $id)->get();
         return view('user.product.detail', compact('attribute', 'item'));
     }
+
+    public function search(Request $request)
+    {
+        $text= $request->search_key;
+        $products = Product::where("name", "LIKE", "%{$text}%")->get();
+        return view('user.product.search', compact('products'));
+
+    }
+
+    public function category_ways_product($id)
+    {
+
+    }
 }

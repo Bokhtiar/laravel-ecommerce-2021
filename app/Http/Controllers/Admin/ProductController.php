@@ -47,6 +47,8 @@ class ProductController extends Controller
         $product->video_provider = $request->video_provider;
         $product->video_link =$request->video_link;
 
+        
+
         $product->unit_price = $request->unit_price;
         $product->date_range_start = $request->date_range_start;
         $product->data_range_end = $request->data_range_end;

@@ -26,6 +26,8 @@ class CreateProductsTable extends Migration
             //product image info
             $table->string('photes');
             $table->string('thumbnail_img');
+            //color section
+      
 
             //product video info
             $table->string('video_provider')->nullable();
