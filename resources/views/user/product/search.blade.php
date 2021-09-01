@@ -16,7 +16,7 @@
                         <p class="hot-deals">
                             <strong style="color: #A9A9A9;">{{$item->name}}</strong> <br>
                             <strong style="color: #A9A9A9;">
-                                <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
+                                 <span style="color: #A9A9A9;">{{$item->unit_price}}Tk</span>
                             </strong>
                         </p>
                     </a>

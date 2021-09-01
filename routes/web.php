@@ -21,7 +21,9 @@ Route::get('/brand/product/{id}', [App\Http\Controllers\User\BrandController::cl
 Route::get('/product/view/{id}', [App\Http\Controllers\User\ProductController::class, 'show']);
 Route::post('search', [App\Http\Controllers\User\ProductController::class, 'search']);
 Route::get('category/product/{id}', [App\Http\Controllers\User\ProductController::class, 'category_ways_product']);
-
+Route::get('/contact', [App\Http\Controllers\WebSettingController::class, 'contact']);
+Route::post('/contact/store', [App\Http\Controllers\User\ContactController::class, 'store']);
+Route::get('/about-us', [App\Http\Controllers\WebSettingController::class, 'about']);
 
 
 

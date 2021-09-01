@@ -50,7 +50,7 @@
     <!--slider and category show start-->
     <!--hot Deals and Offer product start-->
     <section class="my-4">
-        
+
 
                 <div class=" bg-light d-flex justify-content-between align-item-center">
                     <h4 class="mb-0 mt-2">OFFER PRODUCTS</h4>
@@ -67,7 +67,7 @@
                                     <p class="hot-deals">
                                         <strong style="color: #A9A9A9;">{{$item->name}}</strong> <br>
                                         <strong style="color: #A9A9A9;">
-                                            <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
+                                         <span style="color: #A9A9A9;">{{ $item->unit_price }}Tk</span>
                                         </strong>
                                     </p>
                                 </a>
@@ -134,7 +134,7 @@
                             <p class="hot-deals">
                                 <strong style="color: #A9A9A9;">{{$item->name}}</strong> <br>
                                 <strong style="color: #A9A9A9;">
-                                    <span style="color: #A9A9A9; text-decoration: line-through;">TK200</span> | <span style="color: #A9A9A9;">TK240</span>
+                                     <span style="color: #A9A9A9;">{{ $item->unit_price }}Tk</span>
                                 </strong>
                             </p>
                         </a>

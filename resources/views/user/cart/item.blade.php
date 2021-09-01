@@ -32,7 +32,7 @@
             ?>
             <td>
 
-                <img height="80px" width="80px" src="/product/thumbnail_img/images/{{$cart->thumbnail_img}}" alt="">
+                <img height="80px" width="80px" src="/product/thumbnail_img/images/{{$cart->product->thumbnail_img}}" alt="">
             </td>
             <td>
                 <form action="{{url('user/porduct-quantiy/'.$cart->id)}}" method="POST">

@@ -17,7 +17,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @if (Auth::check())
-                                <a class="dropdown-item text-dark" href="login.html">Dashboard</a>
+                                <a class="dropdown-item text-dark" href="{{ url('user/cart/all') }}">Cart</a>
+                                <a class="dropdown-item text-dark" href="{{ url('user/checkout/list') }}">Checkout</a>
                                 @else
                                 <a class="dropdown-item text-dark" href="{{ route('login')}}">Login</a>
                                 <a class="dropdown-item text-dark" href="{{ route('register')}}">Register</a>
@@ -68,17 +69,17 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ">
 
-                        
+
                         @foreach ($categories as $item)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('category/product/'.$item->id) }}">{{$item->name}}</a>
                         </li>
                         @endforeach
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact-Us</a>
+                            <a class="nav-link" href="{{ url('contact') }}">Contact-Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About-Us</a>
+                            <a class="nav-link" href="{{ url('about-us') }}">About-Us</a>
                         </li>
                     </ul>
                 </div>
