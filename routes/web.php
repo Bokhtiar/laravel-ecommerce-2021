@@ -6,7 +6,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\AttributeValueController;
+use App\Http\Controllers\Admin\CheckoutController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\PreOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductVariantController;
 
@@ -107,6 +109,15 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
     });//attribute end
 
     Route::get('/price-variant/{id}', [ProductVariantContr\oller::class, 'price_variant']);
+
+    Route::group(["as"=>'order.', "prefix"=>'order'],function(){
+        Route::get('index', [CheckoutController::class, 'index']);
+        Route::get('status/{id}', [CheckoutController::class, 'status']);
+        Route::get('detail/{id}', [CheckoutController::class, 'detail']);
+        Route::get('cart-delete/{id}', [CheckoutController::class, 'destroy']);
+    });//attribute end
+
+    Route::get('preOrder/index', [PreOrderController::class, 'index']);
 
 });
 

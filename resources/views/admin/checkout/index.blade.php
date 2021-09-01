@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-@section('admin_container')
+@section('admin_content')
 
 <table class="table text-center">
     <thead>
@@ -12,6 +12,7 @@
       </tr>
     </thead>
     <tbody>
+
         @foreach ($checkouts as $checkout)
         <tr>
             <th scope="row">{{ $loop->index +1 }}</th>

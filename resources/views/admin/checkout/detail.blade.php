@@ -1,6 +1,5 @@
 @extends('layouts.admin.app')
-@section('admin_container')
-
+@section('admin_content')
 
 <section class="container">
     <div class="row">
@@ -55,13 +54,13 @@
     @foreach (App\Models\Cart::where('order_id',$checkout->id)->get() as $cart)
         <tr>
             <th scope="row">{{$loop->index + 1}}</th>
-            <td>{{$cart->book->title}}</td>
-            <td>{{$cart->book->price*$cart->quantity}}</td>
+            <td>{{$cart->product->name}}</td>
+            <td>{{$cart->product->unit_price*$cart->quantity}}</td>
             <?php
-            $total_amount +=$cart->book->price*$cart->quantity;
+            $total_amount +=$cart->product->unit_price*$cart->quantity;
             ?>
             <td>
-                <img height="80px" width="80px" src="{{asset($cart->book->image)}}" alt="">
+                <img height="80px" width="80px" src="{{asset($cart->product->image)}}" alt="">
             </td>
             <td>
                 <form action="{{url('admin/order/porduct-quantiy',$cart->id)}}" method="POST">
@@ -71,7 +70,7 @@
                 </form>
             </td>
             <td>
-                <a class="btn btn-sm btn-info" style="" href="{{ url('book/detail',$cart->book->id) }}">View</a>
+                <a class="btn btn-sm btn-info" style="" href="{{ url('admin/product/view',$cart->product->id) }}">View</a>
                 <a class="btn btn-sm btn-danger" style="" href="{{url('admin/order/cart-delete',$cart->id)}}">Delete</a>
             </td>
         </tr>
