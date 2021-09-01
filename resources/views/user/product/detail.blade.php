@@ -43,7 +43,7 @@
                     }
 
                     /* Hide the browser's default checkbox */
-                    .container input {
+                    .container .color {
                         position: absolute;
                         opacity: 0;
                         cursor: pointer;
@@ -62,12 +62,12 @@
                     }
 
                     /* On mouse-over, add a grey background color */
-                    .container:hover input~.checkmark {
+                    .container:hover .color~.checkmark {
                         background-color: #ccc;
                     }
 
                     /* When the checkbox is checked, add a blue background */
-                    /* .container input:checked ~ .checkmark {
+                    /* .container .color:checked ~ .checkmark {
                       background-color: #2196F3;
                     } */
 
@@ -79,7 +79,7 @@
                     }
 
                     /* Show the checkmark when checked */
-                    .container input:checked~.checkmark:after {
+                    .container .color:checked~.checkmark:after {
                         display: block;
                     }
 
@@ -112,7 +112,7 @@
                     <ul class="ul-wrapper">
                         <li class="li-wrapper">
                             <label class="container">
-                                <input class="select_value" id="color" type="checkbox" name="color" value="{{$attr->id}}">
+                                <input class="select_value color" id="color" type="checkbox" name="color" value="{{$attr->id}}">
                                 <span style="background-color:{{$attr->color_id ? $attr->color->color_code : '' }}" class="checkmark"></span>
                             </label>
                         </li>
@@ -130,7 +130,7 @@
                     <ul class="ul-wrapper">
                         <li class="li-wrapper">
                             <label class="container">
-                                <input id="attr" type="checkbox" name="attr" value="{{$attr->id}}">
+                                <input class="color" id="attr" type="checkbox" name="attr" value="{{$attr->id}}">
                                 <span class="checkmark text-center">{{$attr->attribute_value_id ? $attr->attributeValue->name : '' }}</span>
 
                             </label>

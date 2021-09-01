@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\CategoryController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\CheckoutController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PreOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductVariantController;
@@ -24,6 +26,7 @@ Route::get('category/product/{id}', [App\Http\Controllers\User\ProductController
 Route::get('/contact', [App\Http\Controllers\WebSettingController::class, 'contact']);
 Route::post('/contact/store', [App\Http\Controllers\User\ContactController::class, 'store']);
 Route::get('/about-us', [App\Http\Controllers\WebSettingController::class, 'about']);
+Route::get('/logout', [App\Http\Controllers\WebSettingController::class, 'logout']);
 
 
 
@@ -120,6 +123,9 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "namespace"=>'Admin' , "midd
     });//attribute end
 
     Route::get('preOrder/index', [PreOrderController::class, 'index']);
+
+    Route::get('contact/index', [ContactController::class, 'index']);
+    Route::get('logout', [AdminDashboardController::class, 'logout']);
 
 });
 

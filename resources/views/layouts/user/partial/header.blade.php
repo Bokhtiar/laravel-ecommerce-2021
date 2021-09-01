@@ -19,6 +19,7 @@
                                 @if (Auth::check())
                                 <a class="dropdown-item text-dark" href="{{ url('user/cart/all') }}">Cart</a>
                                 <a class="dropdown-item text-dark" href="{{ url('user/checkout/list') }}">Checkout</a>
+                                <a class="dropdown-item text-dark" href="{{ url('logout') }}">Logout</a>
                                 @else
                                 <a class="dropdown-item text-dark" href="{{ route('login')}}">Login</a>
                                 <a class="dropdown-item text-dark" href="{{ route('register')}}">Register</a>

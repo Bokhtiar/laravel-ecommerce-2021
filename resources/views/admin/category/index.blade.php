@@ -47,7 +47,7 @@
         @foreach ($categories as $item)
         <tr>
           <td>{{$loop->index + 1}}</td>
-          <td> <img src="/images/{{$item->icon_image}}" alt=""></td>
+          <td> <img height="60px" width="100px" src="/images/{{$item->icon_image}}" alt=""></td>
           <td>{{$item->name}}</td>
           <td>
             <button type="button" class="btn btn-sm btn-rounded btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg{{$item->id}}"><i class="fas fa-eye"></i></button>
